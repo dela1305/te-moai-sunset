@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Te Moai Sunset — Restaurant en Rapa Nui</title>
+<meta name="description" content="Te Moai Sunset — cocina de autor frente al Pacífico, en Hanga Roa, Isla de Pascua.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black: #0c0b09;
+    --charcoal: #17140f;
+    --panel: #1c1810;
+    --gold: #c9a84c;
+    --gold-soft: #a3854a;
+    --gold-line: rgba(201,168,76,0.35);
+    --cream: #f4efe2;
+    --cream-dim: rgba(244,239,226,0.68);
+    --serif: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+    --sans: 'EB Garamond', Georgia, serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--black);
+    color:var(--cream);
+    font-family:var(--sans);
+    font-size:18px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  h1,h2,h3{font-family:var(--serif); font-weight:500; letter-spacing:0.01em;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 32px;
+    background:linear-gradient(to bottom, rgba(12,11,9,0.85), transparent);
+    transition:background 0.4s ease, padding 0.4s ease;
+  }
+  header.scrolled{ background:rgba(12,11,9,0.92); backdrop-filter:blur(6px); padding:14px 32px; border-bottom:1px solid var(--gold-line);}
+  .brand{font-family:var(--serif); font-size:1.5rem; color:var(--cream); letter-spacing:0.03em;}
+  .brand em{font-style:italic; color:var(--gold);}
+  nav{display:flex; gap:38px; align-items:center;}
+  nav a{font-size:0.95rem; color:var(--cream-dim); position:relative; padding:4px 0;}
+  nav a:hover{color:var(--gold);}
+  nav a.cta-link{
+    color:var(--black); background:var(--gold); padding:10px 22px; border-radius:2px;
+    font-size:0.9rem;
+  }
+  nav a.cta-link:hover{background:var(--cream);}
+  .nav-toggle{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer;}
+  .nav-toggle span{width:26px; height:1px; background:var(--cream);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative; min-height:100vh; display:flex; align-items:flex-end;
+    background:
+      radial-gradient(ellipse at 70% 20%, rgba(201,168,76,0.16), transparent 55%),
+      linear-gradient(180deg, rgba(12,11,9,0.2) 0%, rgba(12,11,9,0.55) 65%, var(--black) 100%),
+      #12100b;
+  }
+  .hero-photo-placeholder{
+    position:absolute; inset:0; z-index:-1;
+    background:
+      linear-gradient(180deg, rgba(12,11,9,0.15) 0%, rgba(12,11,9,0.75) 100%),
+      linear-gradient(120deg, #2b2114 0%, #4a3620 30%, #7a5a2c 50%, #3c2e1a 70%, #14110c 100%);
+    display:flex; align-items:center; justify-content:center;
+    color:rgba(244,239,226,0.35); font-size:0.85rem; letter-spacing:0.08em; text-align:center;
+  }
+  /* Reemplazar por: <img class="hero-photo" src="atardecer-hanga-roa.jpg" alt="Atardecer en Te Moai Sunset"> con position:absolute; inset:0; z-index:-1; object-fit:cover; width:100%; height:100%; */
+  .hero-inner{ padding:0 32px 8vh; width:100%; }
+  .hero-eyebrow{ color:var(--gold); font-style:italic; font-size:1.05rem; margin-bottom:18px; display:block;}
+  .hero h1{
+    font-size:clamp(3rem, 8vw, 6.4rem);
+    line-height:0.98;
+    max-width:900px;
+    color:var(--cream);
+  }
+  .hero h1 span{ display:block; }
+  .hero p.lede{
+    max-width:520px; margin-top:26px; color:var(--cream-dim); font-size:1.15rem;
+  }
+  .hero-actions{ display:flex; gap:22px; margin-top:38px; align-items:center; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--gold); color:var(--black); padding:16px 34px; font-size:0.95rem;
+    letter-spacing:0.02em; border-radius:2px; transition:transform 0.25s ease, background 0.25s ease;
+    display:inline-block;
+  }
+  .btn-primary:hover{ background:var(--cream); transform:translateY(-2px);}
+  .btn-ghost{
+    color:var(--cream); border-bottom:1px solid var(--gold-line); padding-bottom:4px; font-size:0.95rem;
+  }
+  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold);}
+  .scroll-cue{
+    position:absolute; right:32px; bottom:6vh; writing-mode:vertical-rl;
+    color:var(--cream-dim); font-size:0.8rem; letter-spacing:0.15em; display:flex; align-items:center; gap:10px;
+  }
+  .scroll-cue::after{ content:''; width:1px; height:50px; background:linear-gradient(var(--gold), transparent); display:block;}
+
+  /* ---------- Section shell ---------- */
+  section{ padding:130px 0; position:relative;}
+  .section-head{ max-width:640px; margin-bottom:64px;}
+  .section-head .kicker{ color:var(--gold); font-style:italic; font-size:1.05rem;}
+  .section-head h2{ font-size:clamp(2.2rem, 4vw, 3.2rem); margin-top:10px; color:var(--cream);}
+  .rule{ width:64px; height:1px; background:var(--gold); margin:26px 0;}
+
+  /* ---------- Experiencia ---------- */
+  .experience{ background:var(--black);}
+  .exp-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:80px; align-items:start;}
+  .exp-copy p{ color:var(--cream-dim); margin-bottom:20px; max-width:52ch;}
+  .exp-figures{ display:grid; gap:28px;}
+  .exp-figure{ border-top:1px solid var(--gold-line); padding-top:18px;}
+  .exp-figure .num{ font-family:var(--serif); font-size:2.6rem; color:var(--gold);}
+  .exp-figure .label{ color:var(--cream-dim); font-size:0.95rem; margin-top:4px;}
+
+  /* ---------- Carta ---------- */
+  .carta{ background:var(--charcoal);}
+  .carta-tabs{ display:flex; gap:8px; margin-bottom:48px; flex-wrap:wrap;}
+  .carta-tab{
+    padding:10px 20px; border:1px solid var(--gold-line); border-radius:999px; font-size:0.9rem;
+    color:var(--cream-dim); cursor:pointer; background:transparent; font-family:var(--sans);
+  }
+  .carta-tab.active{ background:var(--gold); color:var(--black); border-color:var(--gold);}
+  .carta-panel{ display:none;}
+  .carta-panel.active{ display:block;}
+  .dish{
+    display:flex; justify-content:space-between; gap:24px; padding:22px 0;
+    border-bottom:1px solid rgba(244,239,226,0.1);
+  }
+  .dish-name{ font-family:var(--serif); font-size:1.3rem; color:var(--cream);}
+  .dish-desc{ color:var(--cream-dim); font-size:0.95rem; margin-top:6px; max-width:46ch;}
+  .dish-price{ font-family:var(--serif); font-size:1.2rem; color:var(--gold); white-space:nowrap;}
+  .carta-note{ margin-top:36px; color:var(--cream-dim); font-size:0.92rem; font-style:italic;}
+
+  /* ---------- Testimonios ---------- */
+  .testimonios{ background:var(--black); text-align:center;}
+  .testi-track{ max-width:760px; margin:0 auto; min-height:220px; position:relative;}
+  .testi{
+    position:absolute; inset:0; opacity:0; transition:opacity 0.7s ease;
+  }
+  .testi.active{ opacity:1; position:relative;}
+  .testi blockquote{ font-family:var(--serif); font-size:clamp(1.4rem,2.6vw,1.9rem); font-style:italic; color:var(--cream); line-height:1.5;}
+  .testi cite{ display:block; margin-top:24px; color:var(--gold); font-style:normal; font-size:0.95rem;}
+  .testi-dots{ display:flex; justify-content:center; gap:10px; margin-top:44px;}
+  .testi-dots button{
+    width:8px; height:8px; border-radius:50%; border:1px solid var(--gold-line); background:transparent; cursor:pointer; padding:0;
+  }
+  .testi-dots button.active{ background:var(--gold); border-color:var(--gold);}
+
+  /* ---------- Ubicación + mapa ---------- */
+  .ubicacion{ background:var(--charcoal);}
+  .ubic-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:0; border:1px solid var(--gold-line);}
+  .ubic-info{ padding:56px; display:flex; flex-direction:column; justify-content:center; gap:22px;}
+  .ubic-info h3{ font-size:1.6rem; color:var(--cream);}
+  .ubic-info p{ color:var(--cream-dim);}
+  .ubic-list{ list-style:none; display:grid; gap:14px; margin-top:8px;}
+  .ubic-list li{ color:var(--cream-dim); font-size:0.95rem; display:flex; gap:12px;}
+  .ubic-list li b{ color:var(--gold); font-weight:500; min-width:90px; display:inline-block;}
+  .map-embed{ min-height:420px; background:#0f0d09; position:relative;}
+  .map-embed iframe{ width:100%; height:100%; min-height:420px; border:0; filter:grayscale(0.3) contrast(1.05);}
+
+  /* ---------- Reservas ---------- */
+  .reservas{ background:var(--panel); border-top:1px solid var(--gold-line); border-bottom:1px solid var(--gold-line);}
+  .res-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px;}
+  .res-copy p{ color:var(--cream-dim); margin-top:18px; max-width:44ch;}
+  .res-socials{ display:flex; gap:18px; margin-top:34px;}
+  .res-socials a{
+    border:1px solid var(--gold-line); width:44px; height:44px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; color:var(--gold); font-size:0.95rem;
+  }
+  .res-socials a:hover{ background:var(--gold); color:var(--black);}
+  form{ display:grid; gap:20px;}
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  label{ display:block; font-size:0.85rem; color:var(--cream-dim); margin-bottom:8px; letter-spacing:0.02em;}
+  input, select, textarea{
+    width:100%; background:transparent; border:none; border-bottom:1px solid var(--gold-line);
+    color:var(--cream); font-family:var(--sans); font-size:1rem; padding:10px 2px; outline:none;
+  }
+  input:focus, select:focus, textarea:focus{ border-color:var(--gold);}
+  textarea{ resize:vertical; min-height:70px;}
+  select{ background:var(--panel);}
+  .form-submit{
+    background:var(--gold); color:var(--black); border:none; padding:16px 34px; font-size:0.95rem;
+    cursor:pointer; letter-spacing:0.02em; border-radius:2px; justify-self:start; font-family:var(--sans);
+    transition:background 0.25s ease;
+  }
+  .form-submit:hover{ background:var(--cream);}
+  .form-note{ font-size:0.85rem; color:var(--cream-dim); font-style:italic;}
+  #form-status{ font-size:0.9rem; margin-top:4px;}
+
+  /* ---------- Footer ---------- */
+  footer{ background:var(--black); padding:56px 0 36px; text-align:center;}
+  footer .brand{ display:block; margin-bottom:10px;}
+  footer p{ color:var(--cream-dim); font-size:0.85rem;}
+
+  @media (max-width: 900px){
+    nav{
+      position:fixed; top:0; right:-100%; height:100vh; width:78%; max-width:340px;
+      background:var(--black); flex-direction:column; justify-content:center; gap:34px;
+      transition:right 0.35s ease; border-left:1px solid var(--gold-line);
+    }
+    nav.open{ right:0;}
+    .nav-toggle{ display:flex;}
+    .exp-grid, .ubic-grid, .res-grid{ grid-template-columns:1fr;}
+    .map-embed{ min-height:320px;}
+    .form-row{ grid-template-columns:1fr;}
+    section{ padding:90px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <a href="#top" class="brand">Te Moai <em>Sunset</em></a>
+  <nav id="nav-menu">
+    <a href="#experiencia">Experiencia</a>
+    <a href="#carta">Carta</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="#ubicacion">Ubicación</a>
+    <a href="#reservas" class="cta-link">Reservar</a>
+  </nav>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-photo-placeholder">
+    [ Placeholder — reemplazar por fotografía del atardecer en Te Moai Sunset, Hanga Roa ]
+  </div>
+  <div class="hero-inner wrap">
+    <span class="hero-eyebrow">Hanga Roa · Isla de Pascua</span>
+    <h1><span>El sol se pone</span><span>sobre el Pacífico.</span></h1>
+    <p class="lede">Cocina de autor y vista al mar en el punto más remoto habitado del planeta. Una mesa, un atardecer, una isla.</p>
+    <div class="hero-actions">
+      <a href="#reservas" class="btn-primary">Reservar una mesa</a>
+      <a href="#carta" class="btn-ghost">Ver la carta</a>
+    </div>
+  </div>
+  <span class="scroll-cue">DESLIZA</span>
+</section>
+
+<section class="experience" id="experiencia">
+  <div class="wrap exp-grid">
+    <div>
+      <div class="section-head">
+        <span class="kicker">La propuesta</span>
+        <h2>Una mesa frente al fin del mundo</h2>
+      </div>
+      <div class="exp-copy">
+        <p>Te Moai Sunset nació de una idea simple: la mejor cocina de Rapa Nui merece la mejor vista de Rapa Nui. Cada plato toma el pescado del día, los cultivos locales y las técnicas de la isla, servidos con una mirada contemporánea.</p>
+        <p>No es solo comer frente al mar — es sentarse en el mismo horizonte que ha visto navegar a generaciones de rapanui, con una copa en la mano y el sol bajando lento sobre el Pacífico.</p>
+      </div>
+    </div>
+    <div class="exp-figures">
+      <div class="exp-figure">
+        <div class="num">100%</div>
+        <div class="label">Pesca e ingredientes de origen local</div>
+      </div>
+      <div class="exp-figure">
+        <div class="num">1</div>
+        <div class="label">De los pocos restaurantes con vista directa al atardecer en Hanga Roa</div>
+      </div>
+      <div class="exp-figure">
+        <div class="num">3.700</div>
+        <div class="label">Kilómetros de aislamiento — y de razones para venir</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="carta" id="carta">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">La carta</span>
+      <h2>Sabor de isla, técnica de autor</h2>
+    </div>
+
+    <div class="carta-tabs" role="tablist">
+      <button class="carta-tab active" data-tab="entradas">Entradas</button>
+      <button class="carta-tab" data-tab="mar">Del mar</button>
+      <button class="carta-tab" data-tab="carnes">Carnes</button>
+      <button class="carta-tab" data-tab="postres">Postres</button>
+      <button class="carta-tab" data-tab="tragos">Carta de tragos</button>
+    </div>
+
+    <div class="carta-panel active" data-panel="entradas">
+      <div class="dish">
+        <div><div class="dish-name">Ceviche de atún rapanui</div><div class="dish-desc">Atún fresco, leche de tigre de camote local, cilantro y ají picante de la isla.</div></div>
+        <div class="dish-price">$12.000</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Empanadas de langosta</div><div class="dish-desc">Langosta de Isla de Pascua, mantequilla de hierbas, masa dorada al horno de barro.</div></div>
+        <div class="dish-price">$14.500</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Tártar de atún y palta</div><div class="dish-desc">Corte fino, palta de la isla, sésamo tostado, soya-miso.</div></div>
+        <div class="dish-price">$13.000</div>
+      </div>
+    </div>
+
+    <div class="carta-panel" data-panel="mar">
+      <div class="dish">
+        <div><div class="dish-name">Atún a la parrilla, costra de macadamia</div><div class="dish-desc">Atún de pesca artesanal, puré de camote morado, reducción de maracuyá.</div></div>
+        <div class="dish-price">$22.000</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Langosta Te Moai</div><div class="dish-desc">Langosta entera a la parrilla, mantequilla de ajo y limón de la isla, arroz de coco.</div></div>
+        <div class="dish-price">$38.000</div>
+      </div>
+    </div>
+
+    <div class="carta-panel" data-panel="carnes">
+      <div class="dish">
+        <div><div class="dish-name">Lomo vetado a la parrilla</div><div class="dish-desc">Corte premium, papas nativas asadas, chimichurri de hierbas de la isla.</div></div>
+        <div class="dish-price">$19.500</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Pollo camahueto</div><div class="dish-desc">Pollo marinado en especias polinésicas, umu de camote y plátano.</div></div>
+        <div class="dish-price">$16.000</div>
+      </div>
+    </div>
+
+    <div class="carta-panel" data-panel="postres">
+      <div class="dish">
+        <div><div class="dish-name">Poe de plátano</div><div class="dish-desc">Postre tradicional rapanui, plátano, coco y un toque de vainilla.</div></div>
+        <div class="dish-price">$7.500</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Tarta de maracuyá de la isla</div><div class="dish-desc">Base crocante, crema de maracuyá fresca, merengue tostado.</div></div>
+        <div class="dish-price">$8.000</div>
+      </div>
+    </div>
+
+    <div class="carta-panel" data-panel="tragos">
+      <div class="dish">
+        <div><div class="dish-name">Moai Sunset</div><div class="dish-desc">Pisco, maracuyá de la isla, jengibre, espuma de clara de huevo.</div></div>
+        <div class="dish-price">$9.500</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Rapa Nui Mule</div><div class="dish-desc">Ron añejo, lima, ginger beer, hierbas de la isla.</div></div>
+        <div class="dish-price">$9.000</div>
+      </div>
+    </div>
+
+    <p class="carta-note">Platos y precios de referencia — se reemplazarán por la carta definitiva del restaurant.</p>
+  </div>
+</section>
+
+<section class="testimonios" id="testimonios">
+  <div class="wrap">
+    <div class="section-head" style="margin-left:auto; margin-right:auto; text-align:center;">
+      <span class="kicker">Lo que dicen nuestros huéspedes</span>
+      <h2>Una experiencia, no solo una cena</h2>
+    </div>
+    <div class="testi-track" id="testi-track">
+      <div class="testi active" data-index="0">
+        <blockquote>“Nunca había cenado viendo un atardecer así. El servicio fue impecable y el pescado, el mejor que he probado en la isla.”</blockquote>
+        <cite>— Javiera M., Santiago</cite>
+      </div>
+      <div class="testi" data-index="1">
+        <blockquote>“A perfect ending to our Rapa Nui trip. The lobster and the sunset view together are worth the whole flight.”</blockquote>
+        <cite>— Daniel R., Estados Unidos</cite>
+      </div>
+      <div class="testi" data-index="2">
+        <blockquote>“Reservamos para nuestro aniversario y superó todas las expectativas. Volveremos en cada visita a la isla.”</blockquote>
+        <cite>— Carla y Tomás, Valparaíso</cite>
+      </div>
+    </div>
+    <div class="testi-dots" id="testi-dots"></div>
+  </div>
+</section>
+
+<section class="ubicacion" id="ubicacion">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Cómo llegar</span>
+      <h2>Encuéntranos en Hanga Roa</h2>
+    </div>
+    <div class="ubic-grid">
+      <div class="ubic-info">
+        <h3>Te Moai Sunset</h3>
+        <ul class="ubic-list">
+          <li><b>Dirección</b> [ Dirección exacta en Hanga Roa, Rapa Nui ]</li>
+          <li><b>Horario</b> Todos los días, 13:00 – 23:00 hrs</li>
+          <li><b>Teléfono</b> +56 9 XXXX XXXX</li>
+          <li><b>Correo</b> reservastemoaisunset@gmail.com</li>
+        </ul>
+        <p>A pasos del centro de Hanga Roa, con vista despejada al Pacífico — el mejor asiento de la isla para ver caer el sol.</p>
+      </div>
+      <div class="map-embed">
+        <!-- Reemplazar el src por el iframe de "Compartir > Insertar un mapa" de Google Maps, con la ubicación exacta del restaurant -->
+        <iframe
+          src="https://www.google.com/maps?q=Hanga+Roa,+Isla+de+Pascua,+Chile&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación Te Moai Sunset en Hanga Roa">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reservas" id="reservas">
+  <div class="wrap res-grid">
+    <div class="res-copy">
+      <span class="kicker" style="color:var(--gold); font-style:italic;">Reserva tu mesa</span>
+      <h2 style="margin-top:10px; font-size:clamp(2rem,3.5vw,2.6rem);">Guarda tu lugar para el atardecer</h2>
+      <p>Completa el formulario y te confirmaremos por correo o WhatsApp. Para grupos de más de 8 personas, escríbenos directamente.</p>
+      <div class="res-socials">
+        <a href="https://instagram.com/temoaisunset" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <a href="https://facebook.com/temoaisunset" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+        <a href="https://wa.me/56900000000" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+      </div>
+    </div>
+
+    <form id="reserva-form" action="https://formspree.io/f/TU_FORM_ID" method="POST">
+      <div class="form-row">
+        <div>
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div>
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" name="fecha" required>
+        </div>
+        <div>
+          <label for="hora">Hora</label>
+          <input type="time" id="hora" name="hora" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label for="personas">N.º de personas</label>
+          <select id="personas" name="personas" required>
+            <option value="">Selecciona</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+            <option>5</option><option>6</option><option>7</option><option>8+</option>
+          </select>
+        </div>
+        <div>
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+      </div>
+      <div>
+        <label for="mensaje">Comentarios (alergias, ocasión especial, etc.)</label>
+        <textarea id="mensaje" name="mensaje"></textarea>
+      </div>
+      <input type="hidden" name="_subject" value="Nueva reserva — Te Moai Sunset">
+      <button type="submit" class="form-submit">Enviar reserva</button>
+      <p class="form-note">Al enviar, recibiremos tu solicitud por correo y te confirmaremos la disponibilidad.</p>
+      <p id="form-status"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <a href="#top" class="brand">Te Moai <em>Sunset</em></a>
+  <p>Hanga Roa, Isla de Pascua (Rapa Nui), Chile · reservastemoaisunset@gmail.com</p>
+  <p>© <span id="year"></span> Te Moai Sunset. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Header on scroll
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile nav
+  const navToggle = document.getElementById('nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  navToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
+  navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navMenu.classList.remove('open')));
+
+  // Carta tabs
+  const tabs = document.querySelectorAll('.carta-tab');
+  const panels = document.querySelectorAll('.carta-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector(`.carta-panel[data-panel="${tab.dataset.tab}"]`).classList.add('active');
+    });
+  });
+
+  // Testimonios rotator
+  const testis = document.querySelectorAll('.testi');
+  const dotsWrap = document.getElementById('testi-dots');
+  testis.forEach((t, i) => {
+    const dot = document.createElement('button');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => showTesti(i));
+    dotsWrap.appendChild(dot);
+  });
+  let current = 0;
+  function showTesti(i){
+    testis[current].classList.remove('active');
+    dotsWrap.children[current].classList.remove('active');
+    current = i;
+    testis[current].classList.add('active');
+    dotsWrap.children[current].classList.add('active');
+  }
+  setInterval(() => showTesti((current + 1) % testis.length), 6000);
+
+  // Formulario -> Formspree (AJAX para mostrar estado sin recargar)
+  const form = document.getElementById('reserva-form');
+  const status = document.getElementById('form-status');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = 'Enviando...';
+    try{
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if(res.ok){
+        status.textContent = '¡Gracias! Tu solicitud de reserva fue enviada.';
+        form.reset();
+      } else {
+        status.textContent = 'Hubo un problema al enviar. Intenta nuevamente o escríbenos por WhatsApp.';
+      }
+    } catch(err){
+      status.textContent = 'Hubo un problema al enviar. Intenta nuevamente o escríbenos por WhatsApp.';
+    }
+  });
+</script>
+
+</body>
+</html>
