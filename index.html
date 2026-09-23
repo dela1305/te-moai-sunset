@@ -137,14 +137,6 @@
   @keyframes hero-rise{ from{ opacity:0; transform:translateY(22px);} to{ opacity:1; transform:translateY(0);} }
   .hero-media{ position:relative; border-radius:4px; overflow:hidden;}
   .hero-media img{ width:100%; height:600px; object-fit:cover; display:block; transform-origin:center; animation:hero-zoom 22s ease-out forwards;}
-  .hero-badge{
-    position:absolute; left:-28px; bottom:-28px; width:148px; height:148px; border-radius:50%;
-    background:var(--black); border:1px solid var(--terra-line);
-    display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:2px;
-    box-shadow:0 20px 40px -12px rgba(0,0,0,0.6);
-  }
-  .hero-badge-num{ font-family:var(--serif); font-size:2rem; color:var(--gold);}
-  .hero-badge-label{ font-size:0.68rem; letter-spacing:0.03em; color:var(--cream-dim); line-height:1.3; max-width:96px;}
   .scroll-cue{
     position:absolute; right:32px; bottom:6vh; writing-mode:vertical-rl;
     color:var(--cream-dim); font-size:0.8rem; letter-spacing:0.15em; display:flex; align-items:center; gap:10px;
@@ -303,7 +295,6 @@
     .hero-grid{ grid-template-columns:1fr; gap:56px;}
     .hero-media{ order:-1;}
     .hero-media img{ height:340px;}
-    .hero-badge{ left:16px; bottom:-24px; width:120px; height:120px;}
     .hours-card{ margin-top:24px; flex-direction:column; align-items:flex-start; text-align:left;}
     .exp-grid, .ubic-grid, .res-grid, .drinks-grid{ grid-template-columns:1fr;}
     .testi-list{ grid-template-columns:1fr;}
@@ -372,10 +363,6 @@
     </div>
     <div class="hero-media">
       <img src="img/frontis-te-moai-sunset.jpg" alt="Frontis de Te Moai Sunset, Hanga Roa">
-      <div class="hero-badge">
-        <span class="hero-badge-num">~700</span>
-        <span class="hero-badge-label">Moai custodian la isla</span>
-      </div>
     </div>
   </div>
   <span class="scroll-cue">DESLIZA</span>
