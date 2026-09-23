@@ -228,11 +228,6 @@
 
   /* ---------- Testimonios ---------- */
   .testimonios{ background:var(--black);}
-  .testi-list{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
-  .testi-item{ background:var(--panel); border:1px solid var(--gold-line); border-radius:4px; padding:32px 28px;}
-  .testi-item::before{ content:'"'; font-family:var(--serif); font-size:2.6rem; color:var(--terra); line-height:1; display:block; margin-bottom:10px;}
-  .testi-item blockquote{ font-family:var(--serif); font-size:1.25rem; font-style:italic; color:var(--cream); line-height:1.5;}
-  .testi-item cite{ display:block; margin-top:18px; color:var(--gold); font-style:normal; font-size:0.88rem;}
 
   /* ---------- Ubicación + mapa ---------- */
   .ubic-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:0; border:1px solid var(--gold-line);}
@@ -297,7 +292,6 @@
     .hero-media img{ height:340px;}
     .hours-card{ margin-top:24px; flex-direction:column; align-items:flex-start; text-align:left;}
     .exp-grid, .ubic-grid, .res-grid, .drinks-grid{ grid-template-columns:1fr;}
-    .testi-list{ grid-template-columns:1fr;}
     .ambiente-grid{ grid-template-columns:1fr; grid-template-rows:none; height:auto;}
     .ambiente-item{ height:280px;}
     .ambiente-tall{ grid-row:auto; height:280px;}
@@ -710,20 +704,9 @@
     <div class="section-head">
       <h2>Una experiencia, no solo una cena</h2>
     </div>
-    <div class="testi-list">
-      <div class="testi-item">
-        <blockquote>Nunca había cenado viendo un atardecer así. El servicio fue impecable y el pescado, el mejor que he probado en la isla.</blockquote>
-        <cite>— Javiera M., Santiago</cite>
-      </div>
-      <div class="testi-item">
-        <blockquote>A perfect ending to our Rapa Nui trip. The lobster and the sunset view together are worth the whole flight.</blockquote>
-        <cite>— Daniel R., Estados Unidos</cite>
-      </div>
-      <div class="testi-item">
-        <blockquote>Reservamos para nuestro aniversario y superó todas las expectativas. Volveremos en cada visita a la isla.</blockquote>
-        <cite>— Carla y Tomás, Valparaíso</cite>
-      </div>
-    </div>
+    <!-- Elfsight Google Reviews | Untitled Google Reviews -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-eedb230e-a978-4e8b-91ef-dfdcc3ca0380" data-elfsight-app-lazy></div>
   </div>
 </section>
 
