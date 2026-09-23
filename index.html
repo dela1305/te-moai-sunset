@@ -60,10 +60,10 @@
   nav a{font-size:0.95rem; color:var(--cream-dim); position:relative; padding:4px 0;}
   nav a:hover{color:var(--gold);}
   nav a.cta-link{
-    color:var(--black); background:var(--gold); padding:10px 22px; border-radius:2px;
-    font-size:0.9rem;
+    color:var(--cream); background:transparent; border:1px solid var(--gold); padding:9px 21px; border-radius:2px;
+    font-size:0.85rem; letter-spacing:0.06em; transition:background 0.3s ease, color 0.3s ease;
   }
-  nav a.cta-link:hover{background:var(--cream);}
+  nav a.cta-link:hover{ background:var(--gold); color:var(--black);}
   .nav-toggle{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; grid-column:3; justify-self:end;}
   .nav-toggle span{width:26px; height:1px; background:var(--cream);}
 
@@ -105,11 +105,11 @@
   @keyframes hero-zoom{ from{ transform:scale(1);} to{ transform:scale(1.07);} }
   @keyframes hero-rise{ from{ opacity:0; transform:translateY(22px);} to{ opacity:1; transform:translateY(0);} }
   .btn-primary{
-    background:var(--gold); color:var(--black); padding:16px 34px; font-size:0.95rem;
-    letter-spacing:0.02em; border-radius:2px; transition:transform 0.25s ease, background 0.25s ease;
+    background:transparent; color:var(--cream); border:1px solid var(--gold); padding:15px 36px; font-size:0.92rem;
+    letter-spacing:0.06em; border-radius:2px; transition:background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     display:inline-block;
   }
-  .btn-primary:hover{ background:var(--cream); transform:translateY(-2px);}
+  .btn-primary:hover{ background:var(--gold); color:var(--black);}
   .btn-ghost{
     color:var(--cream); border-bottom:1px solid var(--gold-line); padding-bottom:4px; font-size:0.95rem;
   }
