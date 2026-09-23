@@ -136,6 +136,14 @@
   .exp-figure .num{ font-family:var(--serif); font-size:2.6rem; color:var(--gold);}
   .exp-figure .label{ color:var(--cream-dim); font-size:0.95rem; margin-top:4px;}
 
+  /* ---------- Ambiente ---------- */
+  .ambiente{ background:var(--charcoal);}
+  .ambiente-grid{ display:grid; grid-template-columns:1.2fr 1fr; grid-template-rows:1fr 1fr; gap:18px; height:620px;}
+  .ambiente-item{ overflow:hidden; position:relative;}
+  .ambiente-tall{ grid-row:1 / span 2;}
+  .ambiente-item img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.7s ease;}
+  .ambiente-item:hover img{ transform:scale(1.06);}
+
   /* ---------- Carta ---------- */
   .carta{ background:var(--charcoal);}
   .carta-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;}
@@ -248,6 +256,9 @@
     .nav-mobile.open{ right:0;}
     .nav-toggle{ display:flex;}
     .exp-grid, .ubic-grid, .res-grid, .drinks-grid{ grid-template-columns:1fr;}
+    .ambiente-grid{ grid-template-columns:1fr; grid-template-rows:none; height:auto;}
+    .ambiente-item{ height:280px;}
+    .ambiente-tall{ grid-row:auto; height:280px;}
     .map-embed{ min-height:320px;}
     .form-row{ grid-template-columns:1fr;}
     section{ padding:90px 0;}
@@ -259,6 +270,7 @@
 <header id="site-header">
   <nav class="nav-left">
     <a href="#experiencia">Experiencia</a>
+    <a href="#ambiente">Ambiente</a>
     <a href="#carta">Carta</a>
   </nav>
   <a href="#top" class="brand"><img src="img/logo-te-moai-sunset.webp" alt="" class="brand-mark">Te Moai <em>Sunset</em></a>
@@ -269,6 +281,7 @@
   </nav>
   <nav id="nav-menu" class="nav-mobile">
     <a href="#experiencia">Experiencia</a>
+    <a href="#ambiente">Ambiente</a>
     <a href="#carta">Carta</a>
     <a href="#testimonios">Testimonios</a>
     <a href="#ubicacion">Ubicación</a>
@@ -317,6 +330,19 @@
         <div class="num">3.700</div>
         <div class="label">Kilómetros de aislamiento — y de razones para venir</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="ambiente" id="ambiente">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>El ambiente</h2>
+    </div>
+    <div class="ambiente-grid">
+      <div class="ambiente-item ambiente-tall"><img src="img/interior-1.jpg" alt="Comedor de Te Moai Sunset junto a la pared de piedra volcánica"></div>
+      <div class="ambiente-item"><img src="img/interior-2.jpg" alt="Mesa preparada en el comedor de Te Moai Sunset"></div>
+      <div class="ambiente-item"><img src="img/interior-3.jpg" alt="Lámparas de mimbre sobre las mesas del comedor"></div>
     </div>
   </div>
 </section>
