@@ -1,0 +1,56 @@
+name: Deploy Pages
+
+on:
+  push:
+    branches: [main, rediseno-v2]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: site-main
+
+      - name: Checkout rediseno-v2
+        uses: actions/checkout@v4
+        with:
+          ref: rediseno-v2
+          path: site-v2
+
+      - name: Assemble combined site
+        run: |
+          mkdir -p dist
+          cp -r site-main/. dist/
+          rm -rf dist/.git dist/.github
+          mkdir -p dist/v2
+          cp -r site-v2/. dist/v2/
+          rm -rf dist/v2/.git dist/v2/.github
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
