@@ -42,18 +42,21 @@
   /* ---------- Header ---------- */
   header{
     position:fixed; top:0; left:0; right:0; z-index:100;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:22px 32px;
+    display:grid; grid-template-columns:1fr auto 1fr; align-items:center; column-gap:24px;
+    padding:18px 32px;
     background:linear-gradient(to bottom, rgba(12,11,9,0.85), transparent);
     transition:background 0.4s ease, padding 0.4s ease;
   }
-  header.scrolled{ background:rgba(12,11,9,0.92); backdrop-filter:blur(6px); padding:14px 32px; border-bottom:1px solid var(--gold-line);}
-  .brand{font-family:var(--serif); font-size:1.5rem; color:var(--cream); letter-spacing:0.03em; display:inline-flex; align-items:center;}
-  .brand em{font-style:italic; color:var(--gold);}
-  .brand-mark{ height:36px; width:auto; margin-right:12px; display:block;}
-  .brand-mark-lg{ height:56px; margin-right:0; margin-bottom:14px;}
+  header.scrolled{ background:rgba(12,11,9,0.92); backdrop-filter:blur(6px); padding:12px 32px; border-bottom:1px solid var(--gold-line);}
+  .brand{font-family:var(--serif); font-size:1.5rem; color:var(--cream); letter-spacing:0.03em; display:inline-flex; align-items:center; grid-column:2; justify-self:center;}
+  .brand em{font-style:italic; color:var(--cream);}
+  .brand-mark{ height:52px; width:auto; margin-right:12px; display:block;}
+  .brand-mark-lg{ height:64px; margin-right:0; margin-bottom:14px;}
   .footer-brand{ flex-direction:column;}
   nav{display:flex; gap:38px; align-items:center;}
+  .nav-left{ grid-column:1; justify-self:start;}
+  .nav-right{ grid-column:3; justify-self:end;}
+  .nav-mobile{ display:none;}
   nav a{font-size:0.95rem; color:var(--cream-dim); position:relative; padding:4px 0;}
   nav a:hover{color:var(--gold);}
   nav a.cta-link{
@@ -61,7 +64,7 @@
     font-size:0.9rem;
   }
   nav a.cta-link:hover{background:var(--cream);}
-  .nav-toggle{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer;}
+  .nav-toggle{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; grid-column:3; justify-self:end;}
   .nav-toggle span{width:26px; height:1px; background:var(--cream);}
 
   /* ---------- Hero ---------- */
@@ -233,12 +236,14 @@
   footer p{ color:var(--cream-dim); font-size:0.85rem;}
 
   @media (max-width: 900px){
-    nav{
-      position:fixed; top:0; right:-100%; height:100vh; width:78%; max-width:340px;
+    header{ display:flex; justify-content:space-between;}
+    .nav-left, .nav-right{ display:none;}
+    .nav-mobile{
+      display:flex; position:fixed; top:0; right:-100%; height:100vh; width:78%; max-width:340px;
       background:var(--black); flex-direction:column; justify-content:center; gap:34px;
-      transition:right 0.35s ease; border-left:1px solid var(--gold-line);
+      transition:right 0.35s ease; border-left:1px solid var(--gold-line); z-index:99;
     }
-    nav.open{ right:0;}
+    .nav-mobile.open{ right:0;}
     .nav-toggle{ display:flex;}
     .exp-grid, .ubic-grid, .res-grid, .drinks-grid{ grid-template-columns:1fr;}
     .map-embed{ min-height:320px;}
@@ -250,8 +255,17 @@
 <body>
 
 <header id="site-header">
+  <nav class="nav-left">
+    <a href="#experiencia">Experiencia</a>
+    <a href="#carta">Carta</a>
+  </nav>
   <a href="#top" class="brand"><img src="img/logo-te-moai-sunset.webp" alt="" class="brand-mark">Te Moai <em>Sunset</em></a>
-  <nav id="nav-menu">
+  <nav class="nav-right">
+    <a href="#testimonios">Testimonios</a>
+    <a href="#ubicacion">Ubicación</a>
+    <a href="#reservas" class="cta-link">Reservar</a>
+  </nav>
+  <nav id="nav-menu" class="nav-mobile">
     <a href="#experiencia">Experiencia</a>
     <a href="#carta">Carta</a>
     <a href="#testimonios">Testimonios</a>
