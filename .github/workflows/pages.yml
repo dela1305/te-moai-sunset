@@ -33,11 +33,12 @@ jobs:
       - name: Assemble combined site
         run: |
           mkdir -p dist
-          cp -r site-main/. dist/
+          cp -r site-v2/. dist/
           rm -rf dist/.git dist/.github
-          mkdir -p dist/v2
-          cp -r site-v2/. dist/v2/
-          rm -rf dist/v2/.git dist/v2/.github
+          echo "www.temoaisunset.com" > dist/CNAME
+          mkdir -p dist/v1
+          cp -r site-main/. dist/v1/
+          rm -rf dist/v1/.git dist/v1/.github
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
