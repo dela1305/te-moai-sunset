@@ -141,18 +141,20 @@
   .carta-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;}
   .lang-toggle{ display:flex; gap:6px; flex-shrink:0; margin-bottom:6px;}
   .lang-btn{
-    padding:7px 14px; border:1px solid var(--gold-line); border-radius:2px; font-size:0.8rem;
-    letter-spacing:0.04em; color:var(--cream-dim); cursor:pointer; background:transparent; font-family:var(--sans);
-    transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    padding:7px 14px; border:1px solid var(--gold); border-radius:2px; font-size:0.8rem;
+    letter-spacing:0.06em; color:var(--cream); cursor:pointer; background:transparent; font-family:var(--sans);
+    transition:background 0.3s ease, color 0.3s ease;
   }
-  .lang-btn.active{ background:var(--gold); color:var(--black); border-color:var(--gold);}
+  .lang-btn:hover{ background:var(--gold); color:var(--black);}
+  .lang-btn.active{ background:var(--gold); color:var(--black);}
   .carta-tabs{ display:flex; gap:8px; margin-bottom:48px; flex-wrap:wrap;}
   .carta-tab{
-    padding:10px 20px; border:1px solid var(--gold-line); border-radius:2px; font-size:0.9rem;
-    color:var(--cream-dim); cursor:pointer; background:transparent; font-family:var(--sans);
-    transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    padding:10px 20px; border:1px solid var(--gold); border-radius:2px; font-size:0.9rem;
+    letter-spacing:0.03em; color:var(--cream); cursor:pointer; background:transparent; font-family:var(--sans);
+    transition:background 0.3s ease, color 0.3s ease;
   }
-  .carta-tab.active{ background:var(--gold); color:var(--black); border-color:var(--gold);}
+  .carta-tab:hover{ background:var(--gold); color:var(--black);}
+  .carta-tab.active{ background:var(--gold); color:var(--black);}
   .carta-panel{ display:none;}
   .carta-panel.active{ display:block;}
   .dish-group-label{
