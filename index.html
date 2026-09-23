@@ -13,13 +13,17 @@
     --black: #0c0b09;
     --charcoal: #17140f;
     --panel: #1c1810;
-    --gold: #c9a84c;
-    --gold-soft: #a3854a;
-    --gold-line: rgba(201,168,76,0.35);
+    --rose: #e2617d;
+    --rose-deep: #b23f5f;
+    --violet: #8a63ab;
+    --rose-line: rgba(226,97,125,0.35);
     --cream: #f4efe2;
     --cream-dim: rgba(244,239,226,0.68);
     --serif: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
     --sans: 'EB Garamond', Georgia, serif;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -44,14 +48,14 @@
     background:linear-gradient(to bottom, rgba(12,11,9,0.85), transparent);
     transition:background 0.4s ease, padding 0.4s ease;
   }
-  header.scrolled{ background:rgba(12,11,9,0.92); backdrop-filter:blur(6px); padding:14px 32px; border-bottom:1px solid var(--gold-line);}
+  header.scrolled{ background:rgba(12,11,9,0.92); backdrop-filter:blur(6px); padding:14px 32px; border-bottom:1px solid var(--rose-line);}
   .brand{font-family:var(--serif); font-size:1.5rem; color:var(--cream); letter-spacing:0.03em;}
-  .brand em{font-style:italic; color:var(--gold);}
+  .brand em{font-style:italic; color:var(--rose);}
   nav{display:flex; gap:38px; align-items:center;}
   nav a{font-size:0.95rem; color:var(--cream-dim); position:relative; padding:4px 0;}
-  nav a:hover{color:var(--gold);}
+  nav a:hover{color:var(--rose);}
   nav a.cta-link{
-    color:var(--black); background:var(--gold); padding:10px 22px; border-radius:2px;
+    color:var(--black); background:var(--rose); padding:10px 22px; border-radius:2px;
     font-size:0.9rem;
   }
   nav a.cta-link:hover{background:var(--cream);}
@@ -62,71 +66,81 @@
   .hero{
     position:relative; z-index:0; min-height:100vh; display:flex; align-items:flex-end;
     background:
-      radial-gradient(ellipse at 70% 20%, rgba(201,168,76,0.16), transparent 55%),
+      radial-gradient(ellipse at 70% 20%, rgba(226,97,125,0.18), transparent 55%),
+      radial-gradient(ellipse at 15% 75%, rgba(138,99,171,0.14), transparent 50%),
       linear-gradient(180deg, rgba(12,11,9,0.2) 0%, rgba(12,11,9,0.55) 65%, var(--black) 100%),
       #12100b;
   }
   .hero-photo{
     position:absolute; inset:0; z-index:-2;
     width:100%; height:100%; object-fit:cover;
+    transform-origin:center; animation:hero-zoom 22s ease-out forwards;
   }
   .hero-photo-overlay{
     position:absolute; inset:0; z-index:-1;
     background:linear-gradient(180deg, rgba(12,11,9,0.15) 0%, rgba(12,11,9,0.75) 100%);
   }
   .hero-inner{ padding:0 32px 8vh; width:100%; }
-  .hero-eyebrow{ color:var(--gold); font-style:italic; font-size:1.05rem; margin-bottom:18px; display:block;}
   .hero h1{
     font-size:clamp(3rem, 8vw, 6.4rem);
     line-height:0.98;
     max-width:900px;
     color:var(--cream);
   }
-  .hero h1 span{ display:block; }
+  .hero h1 span{ display:block; opacity:0; animation:hero-rise 1s cubic-bezier(0.16,1,0.3,1) forwards;}
+  .hero h1 span:nth-child(1){ animation-delay:0.2s;}
+  .hero h1 span:nth-child(2){ animation-delay:0.38s;}
   .hero p.lede{
     max-width:520px; margin-top:26px; color:var(--cream-dim); font-size:1.15rem;
+    opacity:0; animation:hero-rise 1s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay:0.56s;
   }
-  .hero-actions{ display:flex; gap:22px; margin-top:38px; align-items:center; flex-wrap:wrap;}
+  .hero-actions{
+    display:flex; gap:22px; margin-top:38px; align-items:center; flex-wrap:wrap;
+    opacity:0; animation:hero-rise 1s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay:0.74s;
+  }
+  @keyframes hero-zoom{ from{ transform:scale(1);} to{ transform:scale(1.07);} }
+  @keyframes hero-rise{ from{ opacity:0; transform:translateY(22px);} to{ opacity:1; transform:translateY(0);} }
   .btn-primary{
-    background:var(--gold); color:var(--black); padding:16px 34px; font-size:0.95rem;
+    background:var(--rose); color:var(--black); padding:16px 34px; font-size:0.95rem;
     letter-spacing:0.02em; border-radius:2px; transition:transform 0.25s ease, background 0.25s ease;
     display:inline-block;
   }
   .btn-primary:hover{ background:var(--cream); transform:translateY(-2px);}
   .btn-ghost{
-    color:var(--cream); border-bottom:1px solid var(--gold-line); padding-bottom:4px; font-size:0.95rem;
+    color:var(--cream); border-bottom:1px solid var(--rose-line); padding-bottom:4px; font-size:0.95rem;
   }
-  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold);}
+  .btn-ghost:hover{ border-color:var(--rose); color:var(--rose);}
   .scroll-cue{
     position:absolute; right:32px; bottom:6vh; writing-mode:vertical-rl;
     color:var(--cream-dim); font-size:0.8rem; letter-spacing:0.15em; display:flex; align-items:center; gap:10px;
+    opacity:0; animation:hero-rise 1.2s ease forwards; animation-delay:1s;
   }
-  .scroll-cue::after{ content:''; width:1px; height:50px; background:linear-gradient(var(--gold), transparent); display:block;}
+  .scroll-cue::after{ content:''; width:1px; height:50px; background:linear-gradient(var(--rose), transparent); display:block;}
 
   /* ---------- Section shell ---------- */
   section{ padding:130px 0; position:relative;}
   .section-head{ max-width:640px; margin-bottom:64px;}
-  .section-head .kicker{ color:var(--gold); font-style:italic; font-size:1.05rem;}
-  .section-head h2{ font-size:clamp(2.2rem, 4vw, 3.2rem); margin-top:10px; color:var(--cream);}
-  .rule{ width:64px; height:1px; background:var(--gold); margin:26px 0;}
+  .section-head h2{ font-size:clamp(2.2rem, 4vw, 3.2rem); color:var(--cream);}
+  .rule{ width:64px; height:1px; background:var(--rose); margin:26px 0;}
 
   /* ---------- Experiencia ---------- */
   .experience{ background:var(--black);}
   .exp-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:80px; align-items:start;}
   .exp-copy p{ color:var(--cream-dim); margin-bottom:20px; max-width:52ch;}
   .exp-figures{ display:grid; gap:28px;}
-  .exp-figure{ border-top:1px solid var(--gold-line); padding-top:18px;}
-  .exp-figure .num{ font-family:var(--serif); font-size:2.6rem; color:var(--gold);}
+  .exp-figure{ border-top:1px solid var(--rose-line); padding-top:18px;}
+  .exp-figure .num{ font-family:var(--serif); font-size:2.6rem; color:var(--rose);}
   .exp-figure .label{ color:var(--cream-dim); font-size:0.95rem; margin-top:4px;}
 
   /* ---------- Carta ---------- */
   .carta{ background:var(--charcoal);}
   .carta-tabs{ display:flex; gap:8px; margin-bottom:48px; flex-wrap:wrap;}
   .carta-tab{
-    padding:10px 20px; border:1px solid var(--gold-line); border-radius:999px; font-size:0.9rem;
+    padding:10px 20px; border:1px solid var(--rose-line); border-radius:2px; font-size:0.9rem;
     color:var(--cream-dim); cursor:pointer; background:transparent; font-family:var(--sans);
+    transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
-  .carta-tab.active{ background:var(--gold); color:var(--black); border-color:var(--gold);}
+  .carta-tab.active{ background:var(--rose); color:var(--black); border-color:var(--rose);}
   .carta-panel{ display:none;}
   .carta-panel.active{ display:block;}
   .dish{
@@ -135,58 +149,51 @@
   }
   .dish-name{ font-family:var(--serif); font-size:1.3rem; color:var(--cream);}
   .dish-desc{ color:var(--cream-dim); font-size:0.95rem; margin-top:6px; max-width:46ch;}
-  .dish-price{ font-family:var(--serif); font-size:1.2rem; color:var(--gold); white-space:nowrap;}
+  .dish-price{ font-family:var(--serif); font-size:1.2rem; color:var(--rose); white-space:nowrap;}
   .carta-note{ margin-top:36px; color:var(--cream-dim); font-size:0.92rem; font-style:italic;}
 
   /* ---------- Testimonios ---------- */
-  .testimonios{ background:var(--black); text-align:center;}
-  .testi-track{ max-width:760px; margin:0 auto; min-height:220px; position:relative;}
-  .testi{
-    position:absolute; inset:0; opacity:0; transition:opacity 0.7s ease;
-  }
-  .testi.active{ opacity:1; position:relative;}
-  .testi blockquote{ font-family:var(--serif); font-size:clamp(1.4rem,2.6vw,1.9rem); font-style:italic; color:var(--cream); line-height:1.5;}
-  .testi cite{ display:block; margin-top:24px; color:var(--gold); font-style:normal; font-size:0.95rem;}
-  .testi-dots{ display:flex; justify-content:center; gap:10px; margin-top:44px;}
-  .testi-dots button{
-    width:8px; height:8px; border-radius:50%; border:1px solid var(--gold-line); background:transparent; cursor:pointer; padding:0;
-  }
-  .testi-dots button.active{ background:var(--gold); border-color:var(--gold);}
+  .testimonios{ background:var(--black);}
+  .testi-list{ max-width:840px; display:grid; gap:0;}
+  .testi-item{ border-top:1px solid var(--rose-line); padding:38px 0;}
+  .testi-item blockquote{ font-family:var(--serif); font-size:clamp(1.3rem,2.2vw,1.65rem); font-style:italic; color:var(--cream); line-height:1.55; max-width:62ch;}
+  .testi-item cite{ display:block; margin-top:18px; color:var(--rose); font-style:normal; font-size:0.9rem;}
 
   /* ---------- Ubicación + mapa ---------- */
   .ubicacion{ background:var(--charcoal);}
-  .ubic-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:0; border:1px solid var(--gold-line);}
+  .ubic-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:0; border:1px solid var(--rose-line);}
   .ubic-info{ padding:56px; display:flex; flex-direction:column; justify-content:center; gap:22px;}
   .ubic-info h3{ font-size:1.6rem; color:var(--cream);}
   .ubic-info p{ color:var(--cream-dim);}
   .ubic-list{ list-style:none; display:grid; gap:14px; margin-top:8px;}
   .ubic-list li{ color:var(--cream-dim); font-size:0.95rem; display:flex; gap:12px;}
-  .ubic-list li b{ color:var(--gold); font-weight:500; min-width:90px; display:inline-block;}
+  .ubic-list li b{ color:var(--rose); font-weight:500; min-width:90px; display:inline-block;}
   .map-embed{ min-height:420px; background:#0f0d09; position:relative;}
   .map-embed iframe{ width:100%; height:100%; min-height:420px; border:0; filter:grayscale(0.3) contrast(1.05);}
 
   /* ---------- Reservas ---------- */
-  .reservas{ background:var(--panel); border-top:1px solid var(--gold-line); border-bottom:1px solid var(--gold-line);}
+  .reservas{ background:var(--panel); border-top:1px solid var(--rose-line); border-bottom:1px solid var(--rose-line);}
   .res-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px;}
   .res-copy p{ color:var(--cream-dim); margin-top:18px; max-width:44ch;}
   .res-socials{ display:flex; gap:18px; margin-top:34px;}
   .res-socials a{
-    border:1px solid var(--gold-line); width:44px; height:44px; border-radius:50%;
-    display:flex; align-items:center; justify-content:center; color:var(--gold); font-size:0.95rem;
+    border:1px solid var(--rose-line); width:44px; height:44px; border-radius:2px;
+    display:flex; align-items:center; justify-content:center; color:var(--rose); font-size:0.85rem;
+    letter-spacing:0.04em; transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
-  .res-socials a:hover{ background:var(--gold); color:var(--black);}
+  .res-socials a:hover{ background:var(--rose); color:var(--black); border-color:var(--rose);}
   form{ display:grid; gap:20px;}
   .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:20px;}
   label{ display:block; font-size:0.85rem; color:var(--cream-dim); margin-bottom:8px; letter-spacing:0.02em;}
   input, select, textarea{
-    width:100%; background:transparent; border:none; border-bottom:1px solid var(--gold-line);
+    width:100%; background:transparent; border:none; border-bottom:1px solid var(--rose-line);
     color:var(--cream); font-family:var(--sans); font-size:1rem; padding:10px 2px; outline:none;
   }
-  input:focus, select:focus, textarea:focus{ border-color:var(--gold);}
+  input:focus, select:focus, textarea:focus{ border-color:var(--rose);}
   textarea{ resize:vertical; min-height:70px;}
   select{ background:var(--panel);}
   .form-submit{
-    background:var(--gold); color:var(--black); border:none; padding:16px 34px; font-size:0.95rem;
+    background:var(--rose); color:var(--black); border:none; padding:16px 34px; font-size:0.95rem;
     cursor:pointer; letter-spacing:0.02em; border-radius:2px; justify-self:start; font-family:var(--sans);
     transition:background 0.25s ease;
   }
@@ -203,7 +210,7 @@
     nav{
       position:fixed; top:0; right:-100%; height:100vh; width:78%; max-width:340px;
       background:var(--black); flex-direction:column; justify-content:center; gap:34px;
-      transition:right 0.35s ease; border-left:1px solid var(--gold-line);
+      transition:right 0.35s ease; border-left:1px solid var(--rose-line);
     }
     nav.open{ right:0;}
     .nav-toggle{ display:flex;}
@@ -234,9 +241,8 @@
   <img class="hero-photo" src="img/atardecer-hanga-roa.jpg" alt="Atardecer en Te Moai Sunset, Hanga Roa">
   <div class="hero-photo-overlay"></div>
   <div class="hero-inner wrap">
-    <span class="hero-eyebrow">Hanga Roa · Isla de Pascua</span>
     <h1><span>El sol se pone</span><span>sobre el Pacífico.</span></h1>
-    <p class="lede">Cocina de autor y vista al mar en el punto más remoto habitado del planeta. Una mesa, un atardecer, una isla.</p>
+    <p class="lede">En Hanga Roa, cocina de autor frente al punto más remoto habitado del planeta. Una mesa, un atardecer, una isla.</p>
     <div class="hero-actions">
       <a href="#reservas" class="btn-primary">Reservar una mesa</a>
       <a href="#carta" class="btn-ghost">Ver la carta</a>
@@ -249,7 +255,6 @@
   <div class="wrap exp-grid">
     <div>
       <div class="section-head">
-        <span class="kicker">La propuesta</span>
         <h2>Una mesa frente al fin del mundo</h2>
       </div>
       <div class="exp-copy">
@@ -277,7 +282,6 @@
 <section class="carta" id="carta">
   <div class="wrap">
     <div class="section-head">
-      <span class="kicker">La carta</span>
       <h2>Sabor de isla, técnica de autor</h2>
     </div>
 
@@ -354,32 +358,29 @@
 
 <section class="testimonios" id="testimonios">
   <div class="wrap">
-    <div class="section-head" style="margin-left:auto; margin-right:auto; text-align:center;">
-      <span class="kicker">Lo que dicen nuestros huéspedes</span>
+    <div class="section-head">
       <h2>Una experiencia, no solo una cena</h2>
     </div>
-    <div class="testi-track" id="testi-track">
-      <div class="testi active" data-index="0">
+    <div class="testi-list">
+      <div class="testi-item">
         <blockquote>“Nunca había cenado viendo un atardecer así. El servicio fue impecable y el pescado, el mejor que he probado en la isla.”</blockquote>
         <cite>— Javiera M., Santiago</cite>
       </div>
-      <div class="testi" data-index="1">
+      <div class="testi-item">
         <blockquote>“A perfect ending to our Rapa Nui trip. The lobster and the sunset view together are worth the whole flight.”</blockquote>
         <cite>— Daniel R., Estados Unidos</cite>
       </div>
-      <div class="testi" data-index="2">
+      <div class="testi-item">
         <blockquote>“Reservamos para nuestro aniversario y superó todas las expectativas. Volveremos en cada visita a la isla.”</blockquote>
         <cite>— Carla y Tomás, Valparaíso</cite>
       </div>
     </div>
-    <div class="testi-dots" id="testi-dots"></div>
   </div>
 </section>
 
 <section class="ubicacion" id="ubicacion">
   <div class="wrap">
     <div class="section-head">
-      <span class="kicker">Cómo llegar</span>
       <h2>Encuéntranos en Hanga Roa</h2>
     </div>
     <div class="ubic-grid">
@@ -409,8 +410,7 @@
 <section class="reservas" id="reservas">
   <div class="wrap res-grid">
     <div class="res-copy">
-      <span class="kicker" style="color:var(--gold); font-style:italic;">Reserva tu mesa</span>
-      <h2 style="margin-top:10px; font-size:clamp(2rem,3.5vw,2.6rem);">Guarda tu lugar para el atardecer</h2>
+      <h2 style="font-size:clamp(2rem,3.5vw,2.6rem);">Guarda tu lugar para el atardecer</h2>
       <p>Completa el formulario y te confirmaremos por correo o WhatsApp. Para grupos de más de 8 personas, escríbenos directamente.</p>
       <div class="res-socials">
         <a href="https://instagram.com/te_moai" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
@@ -498,25 +498,6 @@
       document.querySelector(`.carta-panel[data-panel="${tab.dataset.tab}"]`).classList.add('active');
     });
   });
-
-  // Testimonios rotator
-  const testis = document.querySelectorAll('.testi');
-  const dotsWrap = document.getElementById('testi-dots');
-  testis.forEach((t, i) => {
-    const dot = document.createElement('button');
-    if (i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => showTesti(i));
-    dotsWrap.appendChild(dot);
-  });
-  let current = 0;
-  function showTesti(i){
-    testis[current].classList.remove('active');
-    dotsWrap.children[current].classList.remove('active');
-    current = i;
-    testis[current].classList.add('active');
-    dotsWrap.children[current].classList.add('active');
-  }
-  setInterval(() => showTesti((current + 1) % testis.length), 6000);
 
   // Formulario -> Formspree (AJAX para mostrar estado sin recargar)
   const form = document.getElementById('reserva-form');
