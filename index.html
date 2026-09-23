@@ -13,11 +13,17 @@
     --black: #0c0b09;
     --charcoal: #17140f;
     --panel: #1c1810;
+    --paper: #f3ecd9;
     --gold: #c9a84c;
-    --gold-soft: #a3854a;
     --gold-line: rgba(201,168,76,0.35);
+    --terra: #bb5330;
+    --terra-line: rgba(187,83,48,0.35);
     --cream: #f4efe2;
     --cream-dim: rgba(244,239,226,0.68);
+    --ink: #211c14;
+    --ink-dim: rgba(33,28,20,0.62);
+    --hairline: rgba(244,239,226,0.1);
+    --hairline-strong: rgba(244,239,226,0.08);
     --serif: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
     --sans: 'EB Garamond', Georgia, serif;
   }
@@ -36,8 +42,37 @@
   }
   img{max-width:100%; display:block;}
   a{color:inherit; text-decoration:none;}
+  svg{display:block;}
   .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
   h1,h2,h3{font-family:var(--serif); font-weight:500; letter-spacing:0.01em;}
+
+  /* ---------- Light-section token swap ---------- */
+  .section-light{
+    background:var(--paper);
+    --cream:var(--ink);
+    --cream-dim:var(--ink-dim);
+    --gold:#7d5f27;
+    --gold-line: rgba(125,95,39,0.3);
+    --hairline: rgba(33,28,20,0.12);
+    --hairline-strong: rgba(33,28,20,0.09);
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn-primary{
+    background:var(--gold); color:var(--black); border:1px solid var(--gold); padding:15px 34px; font-size:0.92rem;
+    letter-spacing:0.05em; border-radius:2px; transition:background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    display:inline-block;
+  }
+  .btn-primary:hover{ background:transparent; color:var(--cream);}
+  .btn-outline{
+    display:inline-flex; align-items:center; gap:10px;
+    color:var(--cream); border:1px solid var(--gold-line); padding:14px 27px; border-radius:2px;
+    font-size:0.9rem; letter-spacing:0.04em; transition:border-color 0.3s ease, background 0.3s ease;
+  }
+  .btn-outline:hover{ border-color:var(--gold); background:rgba(201,168,76,0.08);}
+  .btn-outline svg{ width:16px; height:16px;}
+  .icon{ width:22px; height:22px; color:var(--terra); flex-shrink:0;}
+  .icon svg{ width:100%; height:100%;}
 
   /* ---------- Header ---------- */
   header{
@@ -47,7 +82,7 @@
     background:linear-gradient(to bottom, rgba(12,11,9,0.85), transparent);
     transition:background 0.4s ease, padding 0.4s ease;
   }
-  header.scrolled{ background:rgba(12,11,9,0.92); backdrop-filter:blur(6px); padding:12px 32px; border-bottom:1px solid var(--gold-line);}
+  header.scrolled{ background:rgba(12,11,9,0.92); backdrop-filter:blur(6px); padding:12px 32px; border-bottom:1px solid rgba(201,168,76,0.35);}
   .brand{font-family:var(--serif); font-size:1.5rem; color:var(--cream); letter-spacing:0.03em; display:inline-flex; align-items:center; grid-column:2; justify-self:center;}
   .brand em{font-style:italic; color:var(--cream);}
   .brand-mark{ height:52px; width:auto; margin-right:12px; display:block;}
@@ -57,67 +92,55 @@
   .nav-left{ grid-column:1; justify-self:start;}
   .nav-right{ grid-column:3; justify-self:end;}
   .nav-mobile{ display:none;}
-  nav a{font-size:0.95rem; color:var(--cream-dim); position:relative; padding:4px 0;}
-  nav a:hover{color:var(--gold);}
-  nav a.cta-link{
-    color:var(--cream); background:transparent; border:1px solid var(--gold); padding:9px 21px; border-radius:2px;
+  header nav a{font-size:0.95rem; color:rgba(244,239,226,0.68); position:relative; padding:4px 0;}
+  header nav a:hover{color:var(--gold);}
+  header nav a.cta-link{
+    color:var(--black); background:var(--gold); border:1px solid var(--gold); padding:9px 21px; border-radius:2px;
     font-size:0.85rem; letter-spacing:0.06em; transition:background 0.3s ease, color 0.3s ease;
   }
-  nav a.cta-link:hover{ background:var(--gold); color:var(--black);}
+  header nav a.cta-link:hover{ background:transparent; color:var(--cream);}
   .nav-toggle{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; grid-column:3; justify-self:end;}
   .nav-toggle span{width:26px; height:1px; background:var(--cream);}
 
   /* ---------- Hero ---------- */
   .hero{
-    position:relative; z-index:0; min-height:100vh; display:flex; align-items:flex-end;
+    position:relative; z-index:0; min-height:100vh; display:flex; align-items:center;
+    padding:170px 0 70px;
     background:
-      radial-gradient(ellipse at 70% 20%, rgba(201,168,76,0.16), transparent 55%),
-      linear-gradient(180deg, rgba(12,11,9,0.2) 0%, rgba(12,11,9,0.55) 65%, var(--black) 100%),
-      #12100b;
+      radial-gradient(ellipse at 78% 28%, rgba(201,168,76,0.14), transparent 55%),
+      var(--black);
   }
-  .hero-photo{
-    position:absolute; inset:0; z-index:-2;
-    width:100%; height:100%; object-fit:cover;
-    transform-origin:center; animation:hero-zoom 22s ease-out forwards;
-  }
-  .hero-photo-overlay{
-    position:absolute; inset:0; z-index:-1;
-    background:linear-gradient(180deg, rgba(12,11,9,0.15) 0%, rgba(12,11,9,0.75) 100%);
-  }
-  .hero-inner{ padding:0 32px 8vh; width:100%; }
+  .hero-grid{ display:grid; grid-template-columns:1fr 0.92fr; gap:64px; align-items:center; width:100%;}
+  .eyebrow{ text-transform:uppercase; letter-spacing:0.2em; font-size:0.78rem; color:var(--terra); margin-bottom:20px;}
   .hero h1{
-    font-size:clamp(3rem, 8vw, 6.4rem);
-    line-height:0.98;
-    max-width:900px;
+    font-size:clamp(2.6rem, 5vw, 4.6rem);
+    line-height:1.03;
     color:var(--cream);
   }
   .hero h1 span{ display:block; opacity:0; animation:hero-rise 1s cubic-bezier(0.16,1,0.3,1) forwards;}
   .hero h1 span:nth-child(1){ animation-delay:0.2s;}
   .hero h1 span:nth-child(2){ animation-delay:0.38s;}
   .hero p.lede{
-    max-width:520px; margin-top:26px; color:var(--cream-dim); font-size:1.15rem;
+    max-width:460px; margin-top:24px; color:var(--cream-dim); font-size:1.1rem;
     opacity:0; animation:hero-rise 1s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay:0.56s;
   }
   .hero-actions{
-    display:flex; gap:22px; margin-top:38px; align-items:center; flex-wrap:wrap;
+    display:flex; gap:18px; margin-top:36px; align-items:center; flex-wrap:wrap;
     opacity:0; animation:hero-rise 1s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay:0.74s;
   }
-  @keyframes hero-zoom{ from{ transform:scale(1);} to{ transform:scale(1.07);} }
+  .hero-facts{
+    display:flex; gap:30px; margin-top:44px; flex-wrap:wrap;
+    opacity:0; animation:hero-rise 1s cubic-bezier(0.16,1,0.3,1) forwards; animation-delay:0.9s;
+  }
+  .hero-fact{ display:flex; align-items:center; gap:10px; color:var(--cream-dim); font-size:0.85rem;}
+  @keyframes hero-zoom{ from{ transform:scale(1);} to{ transform:scale(1.08);} }
   @keyframes hero-rise{ from{ opacity:0; transform:translateY(22px);} to{ opacity:1; transform:translateY(0);} }
-  .btn-primary{
-    background:transparent; color:var(--cream); border:1px solid var(--gold); padding:15px 36px; font-size:0.92rem;
-    letter-spacing:0.06em; border-radius:2px; transition:background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    display:inline-block;
-  }
-  .btn-primary:hover{ background:var(--gold); color:var(--black);}
-  .btn-ghost{
-    color:var(--cream); border-bottom:1px solid var(--gold-line); padding-bottom:4px; font-size:0.95rem;
-  }
-  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold);}
+  .hero-media{ position:relative; border-radius:4px; overflow:hidden;}
+  .hero-media img{ width:100%; height:600px; object-fit:cover; display:block; transform-origin:center; animation:hero-zoom 22s ease-out forwards;}
   .scroll-cue{
     position:absolute; right:32px; bottom:6vh; writing-mode:vertical-rl;
     color:var(--cream-dim); font-size:0.8rem; letter-spacing:0.15em; display:flex; align-items:center; gap:10px;
-    opacity:0; animation:hero-rise 1.2s ease forwards; animation-delay:1s;
+    opacity:0; animation:hero-rise 1.2s ease forwards; animation-delay:1.1s;
   }
   .scroll-cue::after{ content:''; width:1px; height:50px; background:linear-gradient(var(--gold), transparent); display:block;}
 
@@ -127,14 +150,26 @@
   .section-head h2{ font-size:clamp(2.2rem, 4vw, 3.2rem); color:var(--cream);}
   .rule{ width:64px; height:1px; background:var(--gold); margin:26px 0;}
 
+  /* ---------- Hours card (floats between hero and experiencia) ---------- */
+  .hours-card{
+    position:relative; z-index:5; margin-top:-190px; margin-bottom:70px;
+    background:#161310; border:1px solid rgba(201,168,76,0.35); border-radius:4px; padding:32px 40px;
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:26px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.55);
+    --gold:#c9a84c; --gold-line:rgba(201,168,76,0.35); --cream:#f4efe2; --cream-dim:rgba(244,239,226,0.68);
+  }
+  .hours-card-info{ display:flex; align-items:center; gap:16px;}
+  .hours-card-text b{ display:block; color:var(--cream); font-family:var(--serif); font-size:1.1rem; font-weight:500; margin-bottom:3px;}
+  .hours-card-text span{ display:block; color:var(--cream-dim); font-size:0.85rem;}
+  .hours-card .icon{ width:30px; height:30px; color:var(--gold);}
+
   /* ---------- Experiencia ---------- */
-  .experience{ background:var(--black);}
   .exp-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:80px; align-items:start;}
   .exp-copy p{ color:var(--cream-dim); margin-bottom:20px; max-width:52ch;}
-  .exp-figures{ display:grid; gap:28px;}
-  .exp-figure{ border-top:1px solid var(--gold-line); padding-top:18px;}
-  .exp-figure .num{ font-family:var(--serif); font-size:2.6rem; color:var(--gold);}
-  .exp-figure .label{ color:var(--cream-dim); font-size:0.95rem; margin-top:4px;}
+  .exp-figures{ display:grid; gap:26px;}
+  .exp-figure{ border-top:1px solid var(--gold-line); padding-top:18px; display:flex; flex-direction:column; gap:8px;}
+  .exp-figure .num{ font-family:var(--serif); font-size:2.4rem; color:var(--gold);}
+  .exp-figure .label{ color:var(--cream-dim); font-size:0.95rem;}
 
   /* ---------- Ambiente ---------- */
   .ambiente{ background:var(--charcoal);}
@@ -146,7 +181,6 @@
   .ambiente-item:hover img{ transform:scale(1.06);}
 
   /* ---------- Carta ---------- */
-  .carta{ background:var(--charcoal);}
   .carta-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;}
   .lang-toggle{ display:flex; gap:6px; flex-shrink:0; margin-bottom:6px;}
   .lang-btn{
@@ -154,26 +188,26 @@
     letter-spacing:0.06em; color:var(--cream); cursor:pointer; background:transparent; font-family:var(--sans);
     transition:background 0.3s ease, color 0.3s ease;
   }
-  .lang-btn:hover{ background:var(--gold); color:var(--black);}
-  .lang-btn.active{ background:var(--gold); color:var(--black);}
+  .lang-btn:hover{ background:var(--gold); color:var(--paper);}
+  .lang-btn.active{ background:var(--gold); color:var(--paper);}
   .carta-tabs{ display:flex; gap:8px; margin-bottom:48px; flex-wrap:wrap;}
   .carta-tab{
     padding:10px 20px; border:1px solid var(--gold); border-radius:2px; font-size:0.9rem;
     letter-spacing:0.03em; color:var(--cream); cursor:pointer; background:transparent; font-family:var(--sans);
     transition:background 0.3s ease, color 0.3s ease;
   }
-  .carta-tab:hover{ background:var(--gold); color:var(--black);}
-  .carta-tab.active{ background:var(--gold); color:var(--black);}
+  .carta-tab:hover{ background:var(--gold); color:var(--paper);}
+  .carta-tab.active{ background:var(--gold); color:var(--paper);}
   .carta-panel{ display:none;}
   .carta-panel.active{ display:block;}
   .dish-group-label{
-    font-family:var(--serif); font-style:italic; color:var(--gold); font-size:1.1rem;
+    font-family:var(--serif); font-style:italic; color:var(--terra); font-size:1.1rem;
     margin:36px 0 4px;
   }
   .dish-group-label:first-child{ margin-top:0;}
   .dish{
     display:flex; justify-content:space-between; gap:24px; padding:22px 0;
-    border-bottom:1px solid rgba(244,239,226,0.1);
+    border-bottom:1px solid var(--hairline);
   }
   .dish-name{ font-family:var(--serif); font-size:1.3rem; color:var(--cream);}
   .dish-name .dish-for{ font-size:1rem; color:var(--cream-dim); font-style:italic;}
@@ -184,7 +218,7 @@
   .drink-sub{ color:var(--cream-dim); font-size:0.82rem; font-style:italic; margin-bottom:10px; line-height:1.4;}
   .drink-row{
     display:flex; justify-content:space-between; gap:16px; padding:8px 0;
-    border-bottom:1px solid rgba(244,239,226,0.08); font-size:0.92rem;
+    border-bottom:1px solid var(--hairline-strong); font-size:0.92rem;
   }
   .drink-row .name{ color:var(--cream);}
   .drink-row .name em{ color:var(--cream-dim); font-size:0.85rem;}
@@ -196,7 +230,6 @@
   .testimonios{ background:var(--black);}
 
   /* ---------- Ubicación + mapa ---------- */
-  .ubicacion{ background:var(--charcoal);}
   .ubic-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:0; border:1px solid var(--gold-line);}
   .ubic-info{ padding:56px; display:flex; flex-direction:column; justify-content:center; gap:22px;}
   .ubic-info h3{ font-size:1.6rem; color:var(--cream);}
@@ -206,12 +239,7 @@
   .ubic-list li b{ color:var(--gold); font-weight:500; min-width:90px; display:inline-block;}
   .map-embed{ min-height:420px; background:#0f0d09; position:relative;}
   .map-embed iframe{ width:100%; height:100%; min-height:420px; border:0;}
-  .ubic-actions{ margin-top:6px;}
-  .btn-outline{
-    display:inline-block; color:var(--cream); border:1px solid var(--gold); padding:12px 26px; border-radius:2px;
-    font-size:0.85rem; letter-spacing:0.04em; transition:background 0.3s ease, color 0.3s ease;
-  }
-  .btn-outline:hover{ background:var(--gold); color:var(--black);}
+  .ubic-actions{ display:flex; gap:14px; flex-wrap:wrap; margin-top:6px;}
 
   /* ---------- Reservas ---------- */
   .reservas{ background:var(--panel); border-top:1px solid var(--gold-line); border-bottom:1px solid var(--gold-line);}
@@ -258,6 +286,11 @@
     }
     .nav-mobile.open{ right:0;}
     .nav-toggle{ display:flex;}
+    .hero{ padding-top:130px;}
+    .hero-grid{ grid-template-columns:1fr; gap:56px;}
+    .hero-media{ order:-1;}
+    .hero-media img{ height:340px;}
+    .hours-card{ margin-top:24px; flex-direction:column; align-items:flex-start; text-align:left;}
     .exp-grid, .ubic-grid, .res-grid, .drinks-grid{ grid-template-columns:1fr;}
     .ambiente-grid{ grid-template-columns:1fr; grid-template-rows:none; height:auto;}
     .ambiente-item{ height:280px;}
@@ -296,42 +329,77 @@
 </header>
 
 <section class="hero" id="top">
-  <img class="hero-photo" src="img/frontis-te-moai-sunset.jpg" alt="Frontis de Te Moai Sunset, Hanga Roa">
-  <div class="hero-photo-overlay"></div>
-  <div class="hero-inner wrap">
-    <h1><span>El sol se pone</span><span>sobre el Pacífico.</span></h1>
-    <p class="lede">En Hanga Roa, cocina de autor frente al punto más remoto habitado del planeta. Una mesa, un atardecer, una isla.</p>
-    <div class="hero-actions">
-      <a href="#reservas" class="btn-primary">Reservar una mesa</a>
-      <a href="#carta" class="btn-ghost">Ver la carta</a>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Cocina de autor · Hanga Roa</p>
+      <h1><span>El sol se pone</span><span>sobre el Pacífico.</span></h1>
+      <p class="lede">En Hanga Roa, cocina de autor frente al punto más remoto habitado del planeta. Una mesa, un atardecer, una isla.</p>
+      <div class="hero-actions">
+        <a href="#reservas" class="btn-primary">Reservar una mesa</a>
+        <a href="#carta" class="btn-outline">Ver la carta
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+        </a>
+      </div>
+      <div class="hero-facts">
+        <div class="hero-fact">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 12c3-4 6-4 9 0s6 4 9 0"/><path d="M3 17c3-4 6-4 9 0s6 4 9 0" opacity=".5"/></svg></span>
+          <span>Pesca del día</span>
+        </div>
+        <div class="hero-fact">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></span>
+          <span>Vista al Pacífico</span>
+        </div>
+        <div class="hero-fact">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 2v8M5 2v5a2 2 0 0 0 4 0V2M9 2v8M9 10v12M17 2c-2 0-3 2-3 5s1 4 3 5v10"/></svg></span>
+          <span>Cocina de autor</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="img/frontis-te-moai-sunset.jpg" alt="Frontis de Te Moai Sunset, Hanga Roa">
     </div>
   </div>
   <span class="scroll-cue">DESLIZA</span>
 </section>
 
-<section class="experience" id="experiencia">
-  <div class="wrap exp-grid">
-    <div>
-      <div class="section-head">
-        <h2>Una mesa frente al fin del mundo</h2>
+<section class="experience section-light" id="experiencia">
+  <div class="wrap">
+    <div class="hours-card">
+      <div class="hours-card-info">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+        <div class="hours-card-text">
+          <b>Lunes a sábado, 12:30 – 00:00 hrs</b>
+          <span>Policarpo Toro S/N, Hanga Roa · +56 32 343 1864</span>
+        </div>
       </div>
-      <div class="exp-copy">
-        <p>Te Moai Sunset nació de una idea simple: la mejor cocina de Rapa Nui merece la mejor vista de Rapa Nui. Cada plato toma el pescado del día, los cultivos locales y las técnicas de la isla, servidos con una mirada contemporánea.</p>
-        <p>No es solo comer frente al mar — es sentarse en el mismo horizonte que ha visto navegar a generaciones de rapanui, con una copa en la mano y el sol bajando lento sobre el Pacífico.</p>
-      </div>
+      <a href="#reservas" class="btn-primary">Reservar una mesa</a>
     </div>
-    <div class="exp-figures">
-      <div class="exp-figure">
-        <div class="num">100%</div>
-        <div class="label">Pesca e ingredientes de origen local</div>
+    <div class="exp-grid">
+      <div>
+        <div class="section-head">
+          <h2>Una mesa frente al fin del mundo</h2>
+        </div>
+        <div class="exp-copy">
+          <p>Te Moai Sunset nació de una idea simple: la mejor cocina de Rapa Nui merece la mejor vista de Rapa Nui. Cada plato toma el pescado del día, los cultivos locales y las técnicas de la isla, servidos con una mirada contemporánea.</p>
+          <p>No es solo comer frente al mar — es sentarse en el mismo horizonte que ha visto navegar a generaciones de rapanui, con una copa en la mano y el sol bajando lento sobre el Pacífico.</p>
+        </div>
       </div>
-      <div class="exp-figure">
-        <div class="num">~700</div>
-        <div class="label">Moai custodian la isla — algunos a solo minutos de tu mesa</div>
-      </div>
-      <div class="exp-figure">
-        <div class="num">3.700</div>
-        <div class="label">Kilómetros de aislamiento — y de razones para venir</div>
+      <div class="exp-figures">
+        <div class="exp-figure">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 12c3-4 6-4 9 0s6 4 9 0"/><path d="M3 17c3-4 6-4 9 0s6 4 9 0" opacity=".5"/></svg></span>
+          <div class="num">100%</div>
+          <div class="label">Pesca e ingredientes de origen local</div>
+        </div>
+        <div class="exp-figure">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 21V11c0-4 1.5-8 3-8s3 4 3 8v10"/><path d="M9 13h6M10.2 8.3h.01M13.8 8.3h.01"/></svg></span>
+          <div class="num">~700</div>
+          <div class="label">Moai custodian la isla — algunos a solo minutos de tu mesa</div>
+        </div>
+        <div class="exp-figure">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg></span>
+          <div class="num">3.700</div>
+          <div class="label">Kilómetros de aislamiento — y de razones para venir</div>
+        </div>
       </div>
     </div>
   </div>
@@ -351,7 +419,7 @@
   </div>
 </section>
 
-<section class="carta" id="carta">
+<section class="carta section-light" id="carta">
   <div class="wrap">
     <div class="section-head carta-head">
       <h2 data-es="Sabor de isla, técnica de autor" data-en="Island flavor, chef's technique">Sabor de isla, técnica de autor</h2>
@@ -642,7 +710,7 @@
   </div>
 </section>
 
-<section class="ubicacion" id="ubicacion">
+<section class="ubicacion section-light" id="ubicacion">
   <div class="wrap">
     <div class="section-head">
       <h2>Encuéntranos en Hanga Roa</h2>
@@ -658,7 +726,9 @@
         </ul>
         <p>A pasos del centro de Hanga Roa, con vista despejada al Pacífico — el mejor asiento de la isla para ver caer el sol.</p>
         <div class="ubic-actions">
-          <a class="btn-outline" href="https://www.google.com/maps/dir/?api=1&destination=Te+Moai+Sunset%2C+Hanga+Roa%2C+Isla+de+Pascua%2C+Chile" target="_blank" rel="noopener">Cómo llegar</a>
+          <a class="btn-outline" href="https://www.google.com/maps/dir/?api=1&destination=Te+Moai+Sunset%2C+Hanga+Roa%2C+Isla+de+Pascua%2C+Chile" target="_blank" rel="noopener">Cómo llegar
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+          </a>
         </div>
       </div>
       <div class="map-embed">
