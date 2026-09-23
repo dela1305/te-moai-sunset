@@ -49,8 +49,11 @@
     transition:background 0.4s ease, padding 0.4s ease;
   }
   header.scrolled{ background:rgba(12,11,9,0.92); backdrop-filter:blur(6px); padding:14px 32px; border-bottom:1px solid var(--rose-line);}
-  .brand{font-family:var(--serif); font-size:1.5rem; color:var(--cream); letter-spacing:0.03em;}
+  .brand{font-family:var(--serif); font-size:1.5rem; color:var(--cream); letter-spacing:0.03em; display:inline-flex; align-items:center;}
   .brand em{font-style:italic; color:var(--rose);}
+  .brand-mark{ height:36px; width:auto; margin-right:12px; display:block;}
+  .brand-mark-lg{ height:56px; margin-right:0; margin-bottom:14px;}
+  .footer-brand{ flex-direction:column;}
   nav{display:flex; gap:38px; align-items:center;}
   nav a{font-size:0.95rem; color:var(--cream-dim); position:relative; padding:4px 0;}
   nav a:hover{color:var(--rose);}
@@ -134,6 +137,14 @@
 
   /* ---------- Carta ---------- */
   .carta{ background:var(--charcoal);}
+  .carta-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;}
+  .lang-toggle{ display:flex; gap:6px; flex-shrink:0; margin-bottom:6px;}
+  .lang-btn{
+    padding:7px 14px; border:1px solid var(--rose-line); border-radius:2px; font-size:0.8rem;
+    letter-spacing:0.04em; color:var(--cream-dim); cursor:pointer; background:transparent; font-family:var(--sans);
+    transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .lang-btn.active{ background:var(--rose); color:var(--black); border-color:var(--rose);}
   .carta-tabs{ display:flex; gap:8px; margin-bottom:48px; flex-wrap:wrap;}
   .carta-tab{
     padding:10px 20px; border:1px solid var(--rose-line); border-radius:2px; font-size:0.9rem;
@@ -143,12 +154,29 @@
   .carta-tab.active{ background:var(--rose); color:var(--black); border-color:var(--rose);}
   .carta-panel{ display:none;}
   .carta-panel.active{ display:block;}
+  .dish-group-label{
+    font-family:var(--serif); font-style:italic; color:var(--rose); font-size:1.1rem;
+    margin:36px 0 4px;
+  }
+  .dish-group-label:first-child{ margin-top:0;}
   .dish{
     display:flex; justify-content:space-between; gap:24px; padding:22px 0;
     border-bottom:1px solid rgba(244,239,226,0.1);
   }
   .dish-name{ font-family:var(--serif); font-size:1.3rem; color:var(--cream);}
+  .dish-name .dish-for{ font-size:1rem; color:var(--cream-dim); font-style:italic;}
   .dish-desc{ color:var(--cream-dim); font-size:0.95rem; margin-top:6px; max-width:46ch;}
+  .drinks-grid{ display:grid; grid-template-columns:1fr 1fr; gap:0 64px;}
+  .drink-group{ margin-bottom:40px; break-inside:avoid;}
+  .drink-group h4{ font-family:var(--serif); font-weight:500; font-size:1.2rem; color:var(--cream); border-bottom:1px solid var(--rose-line); padding-bottom:10px; margin-bottom:6px;}
+  .drink-sub{ color:var(--cream-dim); font-size:0.82rem; font-style:italic; margin-bottom:10px; line-height:1.4;}
+  .drink-row{
+    display:flex; justify-content:space-between; gap:16px; padding:8px 0;
+    border-bottom:1px solid rgba(244,239,226,0.08); font-size:0.92rem;
+  }
+  .drink-row .name{ color:var(--cream);}
+  .drink-row .name em{ color:var(--cream-dim); font-size:0.85rem;}
+  .drink-row .price{ color:var(--rose); white-space:nowrap; font-family:var(--serif); font-size:1rem;}
   .dish-price{ font-family:var(--serif); font-size:1.2rem; color:var(--rose); white-space:nowrap;}
   .carta-note{ margin-top:36px; color:var(--cream-dim); font-size:0.92rem; font-style:italic;}
 
@@ -203,7 +231,7 @@
 
   /* ---------- Footer ---------- */
   footer{ background:var(--black); padding:56px 0 36px; text-align:center;}
-  footer .brand{ display:block; margin-bottom:10px;}
+  footer .brand{ display:inline-flex; margin-bottom:10px;}
   footer p{ color:var(--cream-dim); font-size:0.85rem;}
 
   @media (max-width: 900px){
@@ -214,7 +242,7 @@
     }
     nav.open{ right:0;}
     .nav-toggle{ display:flex;}
-    .exp-grid, .ubic-grid, .res-grid{ grid-template-columns:1fr;}
+    .exp-grid, .ubic-grid, .res-grid, .drinks-grid{ grid-template-columns:1fr;}
     .map-embed{ min-height:320px;}
     .form-row{ grid-template-columns:1fr;}
     section{ padding:90px 0;}
@@ -224,7 +252,7 @@
 <body>
 
 <header id="site-header">
-  <a href="#top" class="brand">Te Moai <em>Sunset</em></a>
+  <a href="#top" class="brand"><img src="img/logo-te-moai-sunset.webp" alt="" class="brand-mark">Te Moai <em>Sunset</em></a>
   <nav id="nav-menu">
     <a href="#experiencia">Experiencia</a>
     <a href="#carta">Carta</a>
@@ -281,78 +309,281 @@
 
 <section class="carta" id="carta">
   <div class="wrap">
-    <div class="section-head">
-      <h2>Sabor de isla, técnica de autor</h2>
+    <div class="section-head carta-head">
+      <h2 data-es="Sabor de isla, técnica de autor" data-en="Island flavor, chef's technique">Sabor de isla, técnica de autor</h2>
+      <div class="lang-toggle" role="group" aria-label="Idioma de la carta">
+        <button class="lang-btn active" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
     </div>
 
     <div class="carta-tabs" role="tablist">
-      <button class="carta-tab active" data-tab="entradas">Entradas</button>
-      <button class="carta-tab" data-tab="mar">Del mar</button>
-      <button class="carta-tab" data-tab="carnes">Carnes</button>
-      <button class="carta-tab" data-tab="postres">Postres</button>
-      <button class="carta-tab" data-tab="tragos">Carta de tragos</button>
+      <button class="carta-tab active" data-tab="piqueos" data-es="Piqueos" data-en="Small Plates">Piqueos</button>
+      <button class="carta-tab" data-tab="pescados" data-es="Pescados" data-en="Fish">Pescados</button>
+      <button class="carta-tab" data-tab="vegetariano" data-es="Vegetariano" data-en="Vegetarian">Vegetariano</button>
+      <button class="carta-tab" data-tab="carnes" data-es="Carnes" data-en="Meat">Carnes</button>
+      <button class="carta-tab" data-tab="postres" data-es="Postres" data-en="Desserts">Postres</button>
+      <button class="carta-tab" data-tab="bebidas" data-es="Bebidas" data-en="Drinks">Bebidas</button>
     </div>
 
-    <div class="carta-panel active" data-panel="entradas">
+    <div class="carta-panel active" data-panel="piqueos">
       <div class="dish">
-        <div><div class="dish-name">Ceviche de atún rapanui</div><div class="dish-desc">Atún fresco, leche de tigre de camote local, cilantro y ají picante de la isla.</div></div>
-        <div class="dish-price">$12.000</div>
+        <div><div class="dish-name">Tabla Rápida <span class="dish-for" data-es="(para 2 pers)" data-en="(for 2)">(para 2 pers)</span></div><div class="dish-desc" data-es="Selección de quesos Mozzarella y Parmesano, charcutería y jamón Serrano, frutos secos, aceitunas y fruta de estación" data-en="Selection of Mozzarella and Parmesan cheeses, cured meats and Serrano ham, nuts, olives and seasonal fruit">Selección de quesos Mozzarella y Parmesano, charcutería y jamón Serrano, frutos secos, aceitunas y fruta de estación</div></div>
+        <div class="dish-price">$30.000</div>
       </div>
       <div class="dish">
-        <div><div class="dish-name">Empanadas de langosta</div><div class="dish-desc">Langosta de Isla de Pascua, mantequilla de hierbas, masa dorada al horno de barro.</div></div>
-        <div class="dish-price">$14.500</div>
+        <div><div class="dish-name">Tabla de Mar <span class="dish-for" data-es="(para 2 pers)" data-en="(for 2)">(para 2 pers)</span></div><div class="dish-desc" data-es="Cev Te Moai, cev de cochayuyo y sashimi polinésico con camarones en panko, salsa agridulce de pimentones y chips de camote · Mrd: Espumante Brut" data-en="Te Moai ceviche, cochayuyo (seaweed) ceviche and Polynesian sashimi with panko shrimp, sweet pepper sauce and sweet-potato chips · Pair: Sparkling Brut">Cev Te Moai, cev de cochayuyo y sashimi polinésico con camarones en panko, salsa agridulce de pimentones y chips de camote · Mrd: Espumante Brut</div></div>
+        <div class="dish-price">$31.500</div>
       </div>
       <div class="dish">
-        <div><div class="dish-name">Tártar de atún y palta</div><div class="dish-desc">Corte fino, palta de la isla, sésamo tostado, soya-miso.</div></div>
-        <div class="dish-price">$13.000</div>
+        <div><div class="dish-name">Papas Caseras</div><div class="dish-desc" data-es="A elección: carne de res, pollo, veggie o longaniza, con salsa de queso azul y cebollín · Mrd: Chardonnay" data-en="Choice of beef, chicken, veggie or sausage, with blue cheese sauce and chives · Pair: Chardonnay">A elección: carne de res, pollo, veggie o longaniza, con salsa de queso azul y cebollín · Mrd: Chardonnay</div></div>
+        <div class="dish-price">$23.500</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Tabla de Fajitas <span class="dish-for" data-es="(para 2 pers)" data-en="(for 2)">(para 2 pers)</span></div><div class="dish-desc" data-es="6 fajitas de carne, pollo o veggie con poroto negro, lechuga, queso, pico de gallo y salsa guasacaca" data-en="6 beef, chicken or veggie fajitas with black beans, lettuce, cheese, pico de gallo and guasacaca sauce">6 fajitas de carne, pollo o veggie con poroto negro, lechuga, queso, pico de gallo y salsa guasacaca</div></div>
+        <div class="dish-price">$26.000</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Camarón o Pescado al Pil Pil</div><div class="dish-desc" data-es="Salteado en aceite de oliva, mantequilla, ajo y ají cacho de cabra con arroz jazmín · Mrd: Sauvignon Blanc" data-en="Sautéed in olive oil, butter, garlic and cacho de cabra chili with jasmine rice · Pair: Sauvignon Blanc">Salteado en aceite de oliva, mantequilla, ajo y ají cacho de cabra con arroz jazmín · Mrd: Sauvignon Blanc</div></div>
+        <div class="dish-price">$17.500</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Camarón Masa Filo <span class="dish-for" data-es="(5 unidades)" data-en="(5 pcs)">(5 unidades)</span></div><div class="dish-desc" data-es="Camarones envueltos en masa filo con salsa agridulce de pimentones" data-en="Phyllo-wrapped shrimp with sweet pepper sauce">Camarones envueltos en masa filo con salsa agridulce de pimentones</div></div>
+        <div class="dish-price">$15.000</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Dip de Tomate y Queso <span class="dish-for" data-es="(para 2 pers)" data-en="(for 2)">(para 2 pers)</span></div><div class="dish-desc" data-es="Acompañado con tostadas" data-en="Served with toasts">Acompañado con tostadas</div></div>
+        <div class="dish-price">$28.000</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Pulpo al Olivo</div><div class="dish-desc" data-es="Láminas de tentáculo frío sobre cama de camote, salsa de oliva, cilantro y alcaparras · Mrd: Sauvignon Blanc" data-en="Chilled sliced tentacle over sweet potato, olive sauce, cilantro and capers · Pair: Sauvignon Blanc">Láminas de tentáculo frío sobre cama de camote, salsa de oliva, cilantro y alcaparras · Mrd: Sauvignon Blanc</div></div>
+        <div class="dish-price">$22.000</div>
       </div>
     </div>
 
-    <div class="carta-panel" data-panel="mar">
+    <div class="carta-panel" data-panel="pescados">
+      <div class="dish-group-label">Te Ika</div>
       <div class="dish">
-        <div><div class="dish-name">Atún a la parrilla, costra de macadamia</div><div class="dish-desc">Atún de pesca artesanal, puré de camote morado, reducción de maracuyá.</div></div>
+        <div><div class="dish-name">Sashimi al Estilo Tahitiano</div><div class="dish-desc" data-es="Finas láminas de pesca local sobre cama de repollo con salsa de soja y arroz jazmín · Mrd: Chardonnay" data-en="Thin slices of local catch over cabbage with soy sauce and jasmine rice · Pair: Chardonnay">Finas láminas de pesca local sobre cama de repollo con salsa de soja y arroz jazmín · Mrd: Chardonnay</div></div>
+        <div class="dish-price">$20.500</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Carpaccio de Pescado Local</div><div class="dish-desc" data-es="Alcaparras, queso parmesano, aceite de oliva y cebollín con arroz jazmín · Mrd: Sauvignon Blanc" data-en="Capers, parmesan cheese, olive oil and chives with jasmine rice · Pair: Sauvignon Blanc">Alcaparras, queso parmesano, aceite de oliva y cebollín con arroz jazmín · Mrd: Sauvignon Blanc</div></div>
+        <div class="dish-price">$21.000</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Tiradito de Ika</div><div class="dish-desc" data-es="Salsa de ají amarillo con mango y vegetales encurtidos, arroz jazmín · Mrd: Sauvignon Blanc" data-en="Yellow chili sauce with mango and pickled vegetables, jasmine rice · Pair: Sauvignon Blanc">Salsa de ají amarillo con mango y vegetales encurtidos, arroz jazmín · Mrd: Sauvignon Blanc</div></div>
         <div class="dish-price">$22.000</div>
       </div>
       <div class="dish">
-        <div><div class="dish-name">Langosta Te Moai</div><div class="dish-desc">Langosta entera a la parrilla, mantequilla de ajo y limón de la isla, arroz de coco.</div></div>
-        <div class="dish-price">$38.000</div>
+        <div><div class="dish-name">Ceviche Te Moai</div><div class="dish-desc" data-es="Pesca del día, palta, pepino, cebollín, leche de tigre y albahaca, con arroz jazmín, camote y mini ensalada · Mrd: Sauvignon Blanc" data-en="Catch of the day, avocado, cucumber, chives, tiger's milk and basil, with jasmine rice, sweet potato and mini salad · Pair: Sauvignon Blanc">Pesca del día, palta, pepino, cebollín, leche de tigre y albahaca, con arroz jazmín, camote y mini ensalada · Mrd: Sauvignon Blanc</div></div>
+        <div class="dish-price">$23.000</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Cappelletti en Tinta de Calamar</div><div class="dish-desc" data-es="Rellenos de pescado local, ají amarillo encurtido y choritos en salsa de mar con toques de limón" data-en="Filled with local fish, pickled yellow chili and mussels in a sea-broth sauce with a touch of lemon">Rellenos de pescado local, ají amarillo encurtido y choritos en salsa de mar con toques de limón</div></div>
+        <div class="dish-price">$18.000</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Pescado Local a la Plancha</div><div class="dish-desc" data-es="Puré de camote y chutney de piña o salsa de alcaparras · Mrd: Chardonnay" data-en="Sweet potato purée and pineapple chutney or caper sauce · Pair: Chardonnay">Puré de camote y chutney de piña o salsa de alcaparras · Mrd: Chardonnay</div></div>
+        <div class="dish-price">$21.500</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Pescado Local Encostrado</div><div class="dish-desc" data-es="Encostrado en semillas de zapallo, almendras ahumadas y amapola, aderezo cítrico sobre cremoso de mote con vegetales" data-en="Crusted in pumpkin seeds, smoked almonds and poppy seed, citrus dressing over creamy mote with vegetables">Encostrado en semillas de zapallo, almendras ahumadas y amapola, aderezo cítrico sobre cremoso de mote con vegetales</div></div>
+        <div class="dish-price">$22.500</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Caldillo de Mar</div><div class="dish-desc" data-es="Pescado local, choritos y mariscos, verduras y camote (consultar pescado disponible) · Mrd: Sauvignon Blanc" data-en="Local fish, mussels and shellfish, vegetables and sweet potato (ask about available fish) · Pair: Sauvignon Blanc">Pescado local, choritos y mariscos, verduras y camote (consultar pescado disponible) · Mrd: Sauvignon Blanc</div></div>
+        <div class="dish-price">$20.000</div>
+      </div>
+    </div>
+
+    <div class="carta-panel" data-panel="vegetariano">
+      <div class="dish-group-label">Te Sara</div>
+      <div class="dish">
+        <div><div class="dish-name">Ensalada Te Moai</div><div class="dish-desc" data-es="Vegetales del día con pescado crispy y aderezo polinésico" data-en="Vegetables of the day with crispy fish and Polynesian dressing">Vegetales del día con pescado crispy y aderezo polinésico</div></div>
+        <div class="dish-price">$18.500</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Ensalada Fresca</div><div class="dish-desc" data-es="Lechuga, chutney de piña, quinoa, almendras, crutones y vegetales del día" data-en="Lettuce, pineapple chutney, quinoa, almonds, croutons and vegetables of the day">Lechuga, chutney de piña, quinoa, almendras, crutones y vegetales del día</div></div>
+        <div class="dish-price">$17.000</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Ceviche de Cochayuyo</div><div class="dish-desc" data-es="Cilantro, limón y cebollín, camote cocido, mini ensalada y arroz jazmín · Mrd: Sauvignon Blanc" data-en="Cilantro, lemon and chives, cooked sweet potato, mini salad and jasmine rice · Pair: Sauvignon Blanc">Cilantro, limón y cebollín, camote cocido, mini ensalada y arroz jazmín · Mrd: Sauvignon Blanc</div></div>
+        <div class="dish-price">$16.000</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Risotto de Hongos Silvestres</div><div class="dish-desc" data-es="Queso parmesano · Mrd: Cabernet Sauvignon" data-en="Parmesan cheese · Pair: Cabernet Sauvignon">Queso parmesano · Mrd: Cabernet Sauvignon</div></div>
+        <div class="dish-price">$16.500</div>
       </div>
     </div>
 
     <div class="carta-panel" data-panel="carnes">
+      <div class="dish-group-label">Te Kiko</div>
       <div class="dish">
-        <div><div class="dish-name">Lomo vetado a la parrilla</div><div class="dish-desc">Corte premium, papas nativas asadas, chimichurri de hierbas de la isla.</div></div>
-        <div class="dish-price">$19.500</div>
+        <div><div class="dish-name">Las Baby Back del Tío Tata</div><div class="dish-desc" data-es="Costillas de cerdo lechón con papas fritas y salsa BBQ de la casa · Mrd: Syrah" data-en="Suckling pig ribs with french fries and house BBQ sauce · Pair: Syrah">Costillas de cerdo lechón con papas fritas y salsa BBQ de la casa · Mrd: Syrah</div></div>
+        <div class="dish-price">$31.000</div>
       </div>
       <div class="dish">
-        <div><div class="dish-name">Pollo camahueto</div><div class="dish-desc">Pollo marinado en especias polinésicas, umu de camote y plátano.</div></div>
-        <div class="dish-price">$16.000</div>
+        <div><div class="dish-name">Lomo Roquefort</div><div class="dish-desc" data-es="Lomo de res (300 grs) a la plancha con salsa de queso azul y arroz jazmín · Mrd: Cabernet Sauvignon" data-en="Grilled beef tenderloin (300 g) with blue cheese sauce and jasmine rice · Pair: Cabernet Sauvignon">Lomo de res (300 grs) a la plancha con salsa de queso azul y arroz jazmín · Mrd: Cabernet Sauvignon</div></div>
+        <div class="dish-price">$26.900</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Lomo a lo Pobre</div><div class="dish-desc" data-es="Lomo de res (300 grs) a la plancha, papas fritas, huevo frito y cebolla estofada · Mrd: Cabernet Sauvignon" data-en="Grilled beef tenderloin (300 g), french fries, fried egg and stewed onion · Pair: Cabernet Sauvignon">Lomo de res (300 grs) a la plancha, papas fritas, huevo frito y cebolla estofada · Mrd: Cabernet Sauvignon</div></div>
+        <div class="dish-price">$29.900</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name" data-es="Menú de Niños (hasta 12 años)" data-en="Kids Menu (up to 12 years)">Menú de Niños (hasta 12 años)</div><div class="dish-desc" data-es="Pollo o pescado crispy con arroz o papas fritas" data-en="Crispy chicken or fish with rice or french fries">Pollo o pescado crispy con arroz o papas fritas</div></div>
+        <div class="dish-price">$12.500</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name" data-es="Menú del Día · 12:30 a 16:00 hrs" data-en="Menu of the Day · 12:30–4:00 pm">Menú del Día · 12:30 a 16:00 hrs</div><div class="dish-desc" data-es="Consulte la opción diaria" data-en="Ask about today's option">Consulte la opción diaria</div></div>
+        <div class="dish-price">$15.000</div>
       </div>
     </div>
 
     <div class="carta-panel" data-panel="postres">
       <div class="dish">
-        <div><div class="dish-name">Poe de plátano</div><div class="dish-desc">Postre tradicional rapanui, plátano, coco y un toque de vainilla.</div></div>
-        <div class="dish-price">$7.500</div>
+        <div><div class="dish-name">Crème Brûlée</div></div>
+        <div class="dish-price">$6.000</div>
       </div>
       <div class="dish">
-        <div><div class="dish-name">Tarta de maracuyá de la isla</div><div class="dish-desc">Base crocante, crema de maracuyá fresca, merengue tostado.</div></div>
-        <div class="dish-price">$8.000</div>
+        <div><div class="dish-name">Cheesecake de la Casa</div><div class="dish-desc" data-es="Consultar sabor" data-en="Ask about today's flavor">Consultar sabor</div></div>
+        <div class="dish-price">$6.000</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Torta de la Tía Erica</div><div class="dish-desc" data-es="Discos de merengue, crema chantilly, dulce de leche y frutos rojos" data-en="Meringue discs, whipped cream, dulce de leche and red berries">Discos de merengue, crema chantilly, dulce de leche y frutos rojos</div></div>
+        <div class="dish-price">$5.000</div>
+      </div>
+      <div class="dish">
+        <div><div class="dish-name">Creps con Manjar o Nutella y Helado</div><div class="dish-desc" data-es="Consultar sabor" data-en="Dulce de leche or Nutella, with ice cream — ask about today's flavor">Consultar sabor</div></div>
+        <div class="dish-price">$7.000</div>
       </div>
     </div>
 
-    <div class="carta-panel" data-panel="tragos">
-      <div class="dish">
-        <div><div class="dish-name">Moai Sunset</div><div class="dish-desc">Pisco, maracuyá de la isla, jengibre, espuma de clara de huevo.</div></div>
-        <div class="dish-price">$9.500</div>
-      </div>
-      <div class="dish">
-        <div><div class="dish-name">Rapa Nui Mule</div><div class="dish-desc">Ron añejo, lima, ginger beer, hierbas de la isla.</div></div>
-        <div class="dish-price">$9.000</div>
+    <div class="carta-panel" data-panel="bebidas">
+      <div class="drinks-grid">
+        <div class="drink-group">
+          <h4 data-es="Sours de Autor" data-en="Signature Sours">Sours de Autor</h4>
+          <div class="drink-sub" data-es="Estilo Te Moai" data-en="Te Moai Style">Estilo Te Moai</div>
+          <div class="drink-row"><span class="name">Pisco Sour Clásico</span><span class="price">$6.000</span></div>
+          <div class="drink-row"><span class="name">Pisco Sour Te Moai <em data-es="— menta fresca y arándanos" data-en="— fresh mint and blueberries">— menta fresca y arándanos</em></span><span class="price">$6.500</span></div>
+          <div class="drink-row"><span class="name">Pisco Sour Sunset <em data-es="— mango, maracuyá y frambuesa" data-en="— mango, passion fruit, raspberry">— mango, maracuyá y frambuesa</em></span><span class="price">$7.000</span></div>
+          <div class="drink-row"><span class="name" data-es="Pisco Sour Sunset en Copa" data-en="Pisco Sour Sunset, by the Glass">Pisco Sour Sunset en Copa</span><span class="price">$8.000</span></div>
+          <div class="drink-row"><span class="name">Pisco Sour Anana <em data-es="— piña" data-en="— pineapple">— piña</em></span><span class="price">$7.000</span></div>
+          <div class="drink-row"><span class="name">Pisco Sour Catedral <em data-es="— doble pisco" data-en="— double pisco">— doble pisco</em></span><span class="price">$12.000</span></div>
+          <div class="drink-row"><span class="name">Ramazzotti Sour</span><span class="price">$12.000</span></div>
+          <div class="drink-row"><span class="name">Chardonnay Sour</span><span class="price">$6.000</span></div>
+          <div class="drink-row"><span class="name">Amaretto Sour</span><span class="price">$6.000</span></div>
+          <div class="drink-row"><span class="name">Amaretto Disaronno Sour</span><span class="price">$12.000</span></div>
+        </div>
+
+        <div class="drink-group">
+          <h4>Spritz</h4>
+          <div class="drink-sub" data-es="Refrescantes y burbujeantes" data-en="Refreshing and bubbly">Refrescantes y burbujeantes</div>
+          <div class="drink-row"><span class="name">Aperol Spritz</span><span class="price">$8.000</span></div>
+          <div class="drink-row"><span class="name">Ramazzotti Spritz</span><span class="price">$9.000</span></div>
+          <div class="drink-row"><span class="name">Limoncello Spritz</span><span class="price">$12.000</span></div>
+          <div class="drink-row"><span class="name">St. Germain Spritz</span><span class="price">$9.500</span></div>
+          <div class="drink-row"><span class="name">Amaretto Spritz</span><span class="price">$8.000</span></div>
+        </div>
+
+        <div class="drink-group">
+          <h4 data-es="Cócteles Clásicos" data-en="Classic Cocktails">Cócteles Clásicos</h4>
+          <div class="drink-row"><span class="name">Paloma</span><span class="price">$7.500</span></div>
+          <div class="drink-row"><span class="name" data-es="Sangría por Copa" data-en="Sangria by the Glass">Sangría por Copa</span><span class="price">$7.000</span></div>
+          <div class="drink-row"><span class="name" data-es="Piña Colada" data-en="Piña Colada">Piña Colada</span><span class="price">$8.000</span></div>
+          <div class="drink-row"><span class="name">Caipiriña / Caipiroska / Caipirisima</span><span class="price">$8.000</span></div>
+          <div class="drink-row"><span class="name" data-es="Mojito Tradicional / Sunset" data-en="Mojito Classic / Sunset">Mojito Tradicional / Sunset</span><span class="price">$8.500</span></div>
+          <div class="drink-row"><span class="name">Tequila Margarita</span><span class="price">$7.500</span></div>
+          <div class="drink-row"><span class="name">Clover Club Sunset</span><span class="price">$8.000</span></div>
+          <div class="drink-row"><span class="name">Negroni / Sbagliato / Boulevardier</span><span class="price">$8.500</span></div>
+          <div class="drink-row"><span class="name">Espresso Martini / Pornstar Martini</span><span class="price">$8.000</span></div>
+          <div class="drink-row"><span class="name">Not Gin Tropical</span><span class="price">$8.000</span></div>
+        </div>
+
+        <div class="drink-group">
+          <h4 data-es="Burbujas" data-en="Bubbles">Burbujas</h4>
+          <div class="drink-sub" data-es="Espumantes y Champagne" data-en="Sparkling and Champagne">Espumantes y Champagne</div>
+          <div class="drink-row"><span class="name">Viña Mar Brut</span><span class="price">$26.000</span></div>
+          <div class="drink-row"><span class="name">Codorniu Brut / Rosé</span><span class="price">$32.000</span></div>
+          <div class="drink-row"><span class="name" data-es="Copa de Espumante" data-en="Glass of Sparkling Wine">Copa de Espumante</span><span class="price">$6.000</span></div>
+          <div class="drink-row"><span class="name">Moët &amp; Chandon Brut</span><span class="price">$230.000</span></div>
+          <div class="drink-row"><span class="name">Veuve Clicquot</span><span class="price">$260.000</span></div>
+        </div>
+
+        <div class="drink-group">
+          <h4 data-es="Vino &amp; Cerveza" data-en="Wine &amp; Beer">Vino &amp; Cerveza</h4>
+          <div class="drink-row"><span class="name" data-es="Copa de Vino de la Casa" data-en="House Wine, by the Glass">Copa de Vino de la Casa</span><span class="price">$6.000</span></div>
+          <div class="drink-sub" data-es="Cabernet Sauvignon / Carmenère / Sauvignon Blanc / Chardonnay — pregunte por nuestra carta de vinos" data-en="Cabernet Sauvignon / Carmenère / Sauvignon Blanc / Chardonnay — ask about our wine list">Cabernet Sauvignon / Carmenère / Sauvignon Blanc / Chardonnay — pregunte por nuestra carta de vinos</div>
+          <div class="drink-row"><span class="name">Budweiser (USA)</span><span class="price">$4.500</span></div>
+          <div class="drink-row"><span class="name" data-es="Corona (México)" data-en="Corona (Mexico)">Corona (México)</span><span class="price">$4.500</span></div>
+          <div class="drink-row"><span class="name" data-es="Stella Artois (Bélgica)" data-en="Stella Artois (Belgium)">Stella Artois (Bélgica)</span><span class="price">$4.500</span></div>
+          <div class="drink-row"><span class="name" data-es="Heineken 0° (Holanda)" data-en="Heineken 0° (Netherlands)">Heineken 0° (Holanda)</span><span class="price">$4.500</span></div>
+          <div class="drink-row"><span class="name">Mahina Motu Lager (Rapa Nui)</span><span class="price">$4.000</span></div>
+          <div class="drink-row"><span class="name">Escudo (Chile)</span><span class="price">$4.000</span></div>
+          <div class="drink-row"><span class="name">Austral (Patagonia, Chile)</span><span class="price">$6.000</span></div>
+          <div class="drink-row"><span class="name">Kross (Chile)</span><span class="price">$6.500</span></div>
+          <div class="drink-row"><span class="name" data-es="Michelada o Chelada, tu cerveza" data-en="Michelada or Chelada, your beer">Michelada o Chelada, tu cerveza</span><span class="price">$2.500</span></div>
+        </div>
+
+        <div class="drink-group">
+          <h4 data-es="Destilados Premium" data-en="Premium Spirits">Destilados Premium</h4>
+          <div class="drink-sub" data-es="No incluye bebida" data-en="Mixer not included">No incluye bebida</div>
+          <div class="drink-row"><span class="name">Pisco Alto del Carmen 35°</span><span class="price">$5.000</span></div>
+          <div class="drink-row"><span class="name">Pisco Alto del Carmen Añejado</span><span class="price">$8.000</span></div>
+          <div class="drink-row"><span class="name">Pisco Mistral 35°</span><span class="price">$5.000</span></div>
+          <div class="drink-row"><span class="name">Pisco Mistral 40°</span><span class="price">$6.000</span></div>
+          <div class="drink-row"><span class="name">Pisco Mistral Noble</span><span class="price">$7.500</span></div>
+          <div class="drink-row"><span class="name">Havana Club Añejo Especial</span><span class="price">$6.000</span></div>
+          <div class="drink-row"><span class="name" data-es="Ron Zacapa 23 años" data-en="Ron Zacapa 23 Years">Ron Zacapa 23 años</span><span class="price">$18.500</span></div>
+          <div class="drink-row"><span class="name">Stoli</span><span class="price">$6.000</span></div>
+          <div class="drink-row"><span class="name">Gin Hendrick's</span><span class="price">$13.000</span></div>
+          <div class="drink-row"><span class="name">Gin Beefeater</span><span class="price">$8.500</span></div>
+          <div class="drink-row"><span class="name">Gin Bombay</span><span class="price">$8.500</span></div>
+          <div class="drink-row"><span class="name">J.W. Red Label</span><span class="price">$8.000</span></div>
+          <div class="drink-row"><span class="name">J.W. Black Label</span><span class="price">$18.500</span></div>
+          <div class="drink-row"><span class="name" data-es="J.W. Doble Black" data-en="J.W. Double Black">J.W. Doble Black</span><span class="price">$20.000</span></div>
+          <div class="drink-row"><span class="name" data-es="Glenfiddich 12 años" data-en="Glenfiddich 12 Years">Glenfiddich 12 años</span><span class="price">$20.000</span></div>
+          <div class="drink-row"><span class="name">Jack Daniel's N7 / Honey / Fire / Apple</span><span class="price">$11.000</span></div>
+          <div class="drink-row"><span class="name">Jack Daniel's Single</span><span class="price">$20.000</span></div>
+        </div>
+
+        <div class="drink-group">
+          <h4 data-es="Bajativos" data-en="Digestifs">Bajativos</h4>
+          <div class="drink-row"><span class="name">Jägermeister</span><span class="price">$6.500</span></div>
+          <div class="drink-row"><span class="name">Baileys</span><span class="price">$7.500</span></div>
+          <div class="drink-row"><span class="name">Fernet</span><span class="price">$5.500</span></div>
+          <div class="drink-row"><span class="name">Amaretto Disaronno</span><span class="price">$9.500</span></div>
+        </div>
+
+        <div class="drink-group">
+          <h4 data-es="Sin Alcohol" data-en="Non-Alcoholic">Sin Alcohol</h4>
+          <div class="drink-row"><span class="name" data-es="Bebida Gaseosa" data-en="Soft Drink">Bebida Gaseosa</span><span class="price">$3.500</span></div>
+          <div class="drink-row"><span class="name" data-es="Bebida Tónica Premium" data-en="Premium Tonic Water">Bebida Tónica Premium</span><span class="price">$5.500</span></div>
+          <div class="drink-row"><span class="name" data-es="Agua Filtrada c/s Gas" data-en="Filtered Water, Still or Sparkling">Agua Filtrada c/s Gas</span><span class="price">$3.000</span></div>
+          <div class="drink-row"><span class="name" data-es="Jugos Naturales" data-en="Fresh Juices">Jugos Naturales</span><span class="price">$5.000</span></div>
+        </div>
+
+        <div class="drink-group">
+          <h4 data-es="Café" data-en="Coffee">Café</h4>
+          <div class="drink-row"><span class="name">Ristretto</span><span class="price">$3.000</span></div>
+          <div class="drink-row"><span class="name">Espresso</span><span class="price">$3.000</span></div>
+          <div class="drink-row"><span class="name">Americano</span><span class="price">$3.500</span></div>
+          <div class="drink-row"><span class="name">Cortado</span><span class="price">$4.000</span></div>
+          <div class="drink-row"><span class="name">Latte</span><span class="price">$4.500</span></div>
+        </div>
+
+        <div class="drink-group">
+          <h4 data-es="Té y/o Infusiones" data-en="Tea &amp; Infusions">Té y/o Infusiones</h4>
+          <div class="drink-row"><span class="name">Twinings Variedades</span><span class="price">$3.500</span></div>
+          <div class="drink-row"><span class="name">Earl Grey Bravo</span><span class="price">$3.500</span></div>
+          <div class="drink-row"><span class="name">English Breakfast</span><span class="price">$3.500</span></div>
+          <div class="drink-row"><span class="name">Foxtrot <em data-es="— té negro y manzanilla" data-en="— black tea and chamomile">— té negro y manzanilla</em></span><span class="price">$3.500</span></div>
+        </div>
       </div>
     </div>
 
-    <p class="carta-note">Platos y precios de referencia — se reemplazarán por la carta definitiva del restaurant.</p>
+    <p class="carta-note" data-es="Platos sujetos a disponibilidad de pesca del día. Consulta por alergias e intolerancias." data-en="Dishes subject to daily catch availability. Ask us about allergies and intolerances.">Platos sujetos a disponibilidad de pesca del día. Consulta por alergias e intolerancias.</p>
   </div>
 </section>
 
@@ -467,7 +698,7 @@
 </section>
 
 <footer>
-  <a href="#top" class="brand">Te Moai <em>Sunset</em></a>
+  <a href="#top" class="brand footer-brand"><img src="img/logo-te-moai-sunset.webp" alt="" class="brand-mark brand-mark-lg">Te Moai <em>Sunset</em></a>
   <p>Hanga Roa, Isla de Pascua (Rapa Nui), Chile · reservastemoaisunset@gmail.com</p>
   <p>© <span id="year"></span> Te Moai Sunset. Todos los derechos reservados.</p>
 </footer>
@@ -496,6 +727,17 @@
       panels.forEach(p => p.classList.remove('active'));
       tab.classList.add('active');
       document.querySelector(`.carta-panel[data-panel="${tab.dataset.tab}"]`).classList.add('active');
+    });
+  });
+
+  // Carta idioma ES/EN
+  const langBtns = document.querySelectorAll('.lang-btn');
+  const i18nEls = document.querySelectorAll('#carta [data-es]');
+  langBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.dataset.lang;
+      langBtns.forEach(b => b.classList.toggle('active', b === btn));
+      i18nEls.forEach(el => { el.textContent = el.dataset[lang]; });
     });
   });
 
