@@ -185,8 +185,14 @@
   .tiempo-n{ font-family:var(--serif); font-style:italic; color:var(--gold); font-size:1.1rem; padding-top:3px;}
   .tiempo-dish{ font-family:var(--serif); font-size:1.3rem; color:var(--cream);}
   .tiempo-wine{ color:var(--cream-dim); font-size:0.95rem; font-style:italic; margin-top:4px;}
-  .maridajes-pay{ margin-top:44px;}
-  .maridajes-pay p{ color:var(--cream-dim); font-size:0.95rem; margin-bottom:16px;}
+  .maridajes-pay{ margin-top:48px; max-width:820px;}
+  .maridajes-pay h3{ font-size:1.5rem; color:var(--cream); margin-bottom:18px;}
+  .pay-steps{ list-style:none; counter-reset:step; margin-bottom:22px;}
+  .pay-steps li{ counter-increment:step; position:relative; padding:11px 0 11px 40px; border-bottom:1px solid var(--hairline); color:var(--cream-dim); font-size:0.97rem;}
+  .pay-steps li::before{ content:counter(step); position:absolute; left:0; top:9px; font-family:var(--serif); font-style:italic; color:var(--gold); font-size:1.15rem; line-height:1.4;}
+  .pay-steps li b{ color:var(--cream); font-weight:500;}
+  .pay-help{ color:var(--cream-dim); font-size:0.92rem; margin-bottom:22px;}
+  .pay-help a{ color:var(--gold); border-bottom:1px solid var(--gold-line);}
   .ambiente-grid{ display:grid; grid-template-columns:1.2fr 1fr; grid-template-rows:1fr 1fr; gap:18px; height:620px;}
   .ambiente-item{ overflow:hidden; position:relative;}
   .ambiente-tall{ grid-row:1 / span 2;}
@@ -770,7 +776,15 @@
     </div>
 
     <div class="maridajes-pay">
-      <p>Asegura tu cupo con pago online seguro a través de Getnet.</p>
+      <h3>Cómo reservar tu cupo</h3>
+      <ol class="pay-steps">
+        <li>Presiona <b>Reservar mi cupo</b>: se abre el formulario de pago seguro de Getnet.</li>
+        <li>En <b>Referencia</b> escribe tu nombre y &ldquo;Maridaje 14 nov&rdquo;.</li>
+        <li>En <b>Descripción del pago</b> escribe &ldquo;Maridaje 6 tiempos&rdquo; y la cantidad de personas.</li>
+        <li>En <b>Monto</b> ingresa $60.000 por cada persona. Por ejemplo, 2 personas son $120.000.</li>
+        <li>Completa tu identificación y tu correo, y presiona <b>Pagar</b>.</li>
+      </ol>
+      <p class="pay-help">¿Dudas? Escríbenos a <a href="mailto:reservastemoaisunset@gmail.com">reservastemoaisunset@gmail.com</a>.</p>
       <a class="btn-primary" href="https://micrositios.getnet.cl/temoaisunset" target="_blank" rel="noopener">Reservar mi cupo</a>
     </div>
   </div>
@@ -832,7 +846,7 @@
         <a href="https://wa.me/56900000000" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
       </div>
       <div class="res-pay">
-        <p>¿Ya cenaste con nosotros? Paga tu cuenta online de forma segura con Getnet.</p>
+        <p>¿Ya cenaste con nosotros? Paga tu cuenta online de forma segura con Getnet: escribe tu nombre en Referencia, &ldquo;Cuenta restaurant&rdquo; en Descripción y el total de tu cuenta en Monto.</p>
         <a class="btn-outline" href="https://micrositios.getnet.cl/temoaisunset" target="_blank" rel="noopener">
           <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="9" width="12" height="8" rx="1.5"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></svg>
           Pagar mi cuenta
