@@ -176,7 +176,16 @@
   .ambiente-copy{ color:var(--cream-dim); margin-top:14px; max-width:52ch;}
   .maridajes{ background:var(--charcoal);}
   .maridajes-copy{ color:var(--cream-dim); margin-top:14px; max-width:60ch;}
-  .maridajes-pay{ margin-top:12px; padding-top:28px; border-top:1px solid var(--hairline);}
+  .maridaje-facts{ display:grid; grid-template-columns:1fr 1fr 1.4fr; gap:32px; margin-bottom:56px;}
+  .maridaje-fact{ border-top:1px solid var(--gold-line); padding-top:18px; display:flex; flex-direction:column; gap:6px;}
+  .maridaje-fact b{ font-family:var(--serif); font-weight:500; font-size:1.35rem; color:var(--gold);}
+  .maridaje-fact span{ color:var(--cream-dim); font-size:0.95rem;}
+  .tiempos{ max-width:820px;}
+  .tiempo{ display:grid; grid-template-columns:110px 1fr; gap:24px; padding:22px 0; border-bottom:1px solid var(--hairline);}
+  .tiempo-n{ font-family:var(--serif); font-style:italic; color:var(--gold); font-size:1.1rem; padding-top:3px;}
+  .tiempo-dish{ font-family:var(--serif); font-size:1.3rem; color:var(--cream);}
+  .tiempo-wine{ color:var(--cream-dim); font-size:0.95rem; font-style:italic; margin-top:4px;}
+  .maridajes-pay{ margin-top:44px;}
   .maridajes-pay p{ color:var(--cream-dim); font-size:0.95rem; margin-bottom:16px;}
   .ambiente-grid{ display:grid; grid-template-columns:1.2fr 1fr; grid-template-rows:1fr 1fr; gap:18px; height:620px;}
   .ambiente-item{ overflow:hidden; position:relative;}
@@ -300,7 +309,8 @@
     .hero-media{ order:-1;}
     .hero-media img{ height:340px;}
     .hours-card{ margin-top:24px; flex-direction:column; align-items:flex-start; text-align:left;}
-    .exp-grid, .ubic-grid, .res-grid, .drinks-grid{ grid-template-columns:1fr;}
+    .exp-grid, .ubic-grid, .res-grid, .drinks-grid, .maridaje-facts{ grid-template-columns:1fr;}
+    .tiempo{ grid-template-columns:1fr; gap:6px;}
     .ambiente-grid{ grid-template-columns:1fr; grid-template-rows:none; height:auto;}
     .ambiente-item{ height:280px;}
     .ambiente-tall{ grid-row:auto; height:280px;}
@@ -713,47 +723,55 @@
 <section class="maridajes" id="maridajes">
   <div class="wrap">
     <div class="section-head">
-      <h2>Maridajes</h2>
-      <p class="maridajes-copy">Cada plato tiene un vino que lo acompaña mejor. Estas son las sugerencias de la casa, con la selección de vinos chilenos de nuestra cava ancestral. Consulta por nuestra carta de vinos.</p>
+      <h2>Maridaje de 6 tiempos</h2>
+      <p class="maridajes-copy">Una noche de cocina de autor y vinos chilenos en nuestra cava ancestral, con aperitivo de bienvenida de Pisco Sour. Cupos limitados.</p>
     </div>
-    <div class="drinks-grid">
-      <div class="drink-group">
-        <h4>Espumante Brut</h4>
-        <div class="drink-row"><span class="name">Tabla de Mar</span></div>
+
+    <div class="maridaje-facts">
+      <div class="maridaje-fact">
+        <b>Sábado 14 de noviembre</b>
+        <span>20:30 hrs</span>
       </div>
-      <div class="drink-group">
-        <h4>Chardonnay</h4>
-        <div class="drink-row"><span class="name">Papas Caseras</span></div>
-        <div class="drink-row"><span class="name">Sashimi al Estilo Tahitiano</span></div>
-        <div class="drink-row"><span class="name">Pescado Local a la Plancha</span></div>
+      <div class="maridaje-fact">
+        <b>$60.000 por persona</b>
+        <span>Cupos limitados</span>
       </div>
-      <div class="drink-group">
-        <h4>Sauvignon Blanc</h4>
-        <div class="drink-row"><span class="name">Camarón o Pescado al Pil Pil</span></div>
-        <div class="drink-row"><span class="name">Pulpo al Olivo</span></div>
-        <div class="drink-row"><span class="name">Carpaccio de Pescado Local</span></div>
-        <div class="drink-row"><span class="name">Tiradito de Ika</span></div>
-        <div class="drink-row"><span class="name">Ceviche Te Moai</span></div>
-        <div class="drink-row"><span class="name">Caldillo de Mar</span></div>
-        <div class="drink-row"><span class="name">Ceviche de Cochayuyo</span></div>
-      </div>
-      <div class="drink-group">
-        <h4>Cabernet Sauvignon</h4>
-        <div class="drink-row"><span class="name">Risotto de Hongos Silvestres</span></div>
-        <div class="drink-row"><span class="name">Lomo Roquefort</span></div>
-        <div class="drink-row"><span class="name">Lomo a lo Pobre</span></div>
-      </div>
-      <div class="drink-group">
-        <h4>Syrah</h4>
-        <div class="drink-row"><span class="name">Las Baby Back del Tío Tata</span></div>
+      <div class="maridaje-fact">
+        <b>Dirigen</b>
+        <span>Daniel Gaete Huki y Galicia Barría, sommeliers · Claudia Flores, chef profesional</span>
       </div>
     </div>
+
+    <div class="tiempos">
+      <div class="tiempo">
+        <div class="tiempo-n">Tiempo 1</div>
+        <div><div class="tiempo-dish">Tártaro de atún en molde de papel de arroz</div><div class="tiempo-wine">Pinot Noir, De Tiza, JP Martin</div></div>
+      </div>
+      <div class="tiempo">
+        <div class="tiempo-n">Tiempo 2</div>
+        <div><div class="tiempo-dish">Taquito con pescado rebozado y encurtidos</div><div class="tiempo-wine">Amayna Sauvignon Blanc Cordon Huinca Magnum, Viña Garcés Silva</div></div>
+      </div>
+      <div class="tiempo">
+        <div class="tiempo-n">Tiempo 3</div>
+        <div><div class="tiempo-dish">Delicia de Moules (crema de mejillones)</div><div class="tiempo-wine">Chardonnay Gran Vin Villard Fine Wines</div></div>
+      </div>
+      <div class="tiempo">
+        <div class="tiempo-n">Tiempo 4</div>
+        <div><div class="tiempo-dish">Pescado blanco posado en Vichyssoise</div><div class="tiempo-wine">Vigno Bodegas Re</div></div>
+      </div>
+      <div class="tiempo">
+        <div class="tiempo-n">Tiempo 5</div>
+        <div><div class="tiempo-dish">Flat Iron sobre guiso de habas</div><div class="tiempo-wine">Syrah Carabantes, Von Siebenthal</div></div>
+      </div>
+      <div class="tiempo">
+        <div class="tiempo-n">Tiempo 6</div>
+        <div><div class="tiempo-dish">Tarta de Ricotta</div><div class="tiempo-wine">Limoncello Sorrento, Limón mano de Buda</div></div>
+      </div>
+    </div>
+
     <div class="maridajes-pay">
-      <p>¿Ya disfrutaste tu maridaje? Paga tu cuenta online de forma segura con Getnet.</p>
-      <a class="btn-outline" href="https://micrositios.getnet.cl/temoaisunset" target="_blank" rel="noopener">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="9" width="12" height="8" rx="1.5"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></svg>
-        Pagar mi cuenta
-      </a>
+      <p>Asegura tu cupo con pago online seguro a través de Getnet.</p>
+      <a class="btn-primary" href="https://micrositios.getnet.cl/temoaisunset" target="_blank" rel="noopener">Reservar mi cupo</a>
     </div>
   </div>
 </section>
