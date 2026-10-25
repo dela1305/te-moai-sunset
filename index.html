@@ -185,6 +185,15 @@
   .tiempo-n{ font-family:var(--serif); font-style:italic; color:var(--gold); font-size:1.1rem; padding-top:3px;}
   .tiempo-dish{ font-family:var(--serif); font-size:1.3rem; color:var(--cream);}
   .tiempo-wine{ color:var(--cream-dim); font-size:0.95rem; font-style:italic; margin-top:4px;}
+  .equipo{ margin-top:56px;}
+  .equipo h3{ font-size:1.5rem; color:var(--cream); margin-bottom:24px;}
+  .equipo-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:40px;}
+  .persona{ border-top:1px solid var(--gold-line); padding-top:20px;}
+  .persona-foto{ width:150px; aspect-ratio:300/426; object-fit:cover; border-radius:2px; margin-bottom:18px;}
+  .persona h4{ font-family:var(--serif); font-weight:500; font-size:1.5rem; color:var(--cream);}
+  .persona-rol{ font-family:var(--serif); font-style:italic; color:var(--gold); margin:2px 0 16px;}
+  .persona p{ color:var(--cream-dim); font-size:0.95rem; margin-bottom:12px;}
+  .persona-ig{ display:inline-block; margin-top:6px; color:var(--gold); border-bottom:1px solid var(--gold-line); font-size:0.9rem;}
   .maridajes-pay{ margin-top:48px; max-width:820px;}
   .maridajes-pay h3{ font-size:1.5rem; color:var(--cream); margin-bottom:18px;}
   .pay-steps{ list-style:none; counter-reset:step; margin-bottom:22px;}
@@ -315,7 +324,7 @@
     .hero-media{ order:-1;}
     .hero-media img{ height:340px;}
     .hours-card{ margin-top:24px; flex-direction:column; align-items:flex-start; text-align:left;}
-    .exp-grid, .ubic-grid, .res-grid, .drinks-grid, .maridaje-facts{ grid-template-columns:1fr;}
+    .exp-grid, .ubic-grid, .res-grid, .drinks-grid, .maridaje-facts, .equipo-grid{ grid-template-columns:1fr;}
     .tiempo{ grid-template-columns:1fr; gap:6px;}
     .ambiente-grid{ grid-template-columns:1fr; grid-template-rows:none; height:auto;}
     .ambiente-item{ height:280px;}
@@ -772,6 +781,38 @@
       <div class="tiempo">
         <div class="tiempo-n">Tiempo 6</div>
         <div><div class="tiempo-dish">Tarta de Ricotta</div><div class="tiempo-wine">Limoncello Sorrento, Limón mano de Buda</div></div>
+      </div>
+    </div>
+
+    <div class="equipo">
+      <h3>Quiénes dirigen</h3>
+      <div class="equipo-grid">
+        <div class="persona">
+          <img class="persona-foto" src="img/equipo-claudia.jpg" alt="Claudia Flores, chef profesional" loading="lazy">
+          <h4>Claudia Flores</h4>
+          <div class="persona-rol">Chef profesional</div>
+          <p>Mi pasión por la cocina y el arte del maridaje se han ido creando desde la experiencia en los años recorridos en hotelería y restaurantes. Varios de los cuales he vivido en este hermoso lugar. Eso me ha acercado más a las materias primas y preparaciones locales.</p>
+          <p>Con el tiempo descubrí el mundo de los vinos y los maridajes. Hoy junto al equipo de Te Moai Sunset hacemos un complemento de lo moderno y lo autóctono de la gastronomía con la intención de crear una experiencia única que satisface tanto a la vista como al paladar.</p>
+          <a class="persona-ig" href="https://instagram.com/clauflorescer" target="_blank" rel="noopener">@clauflorescer</a>
+        </div>
+        <div class="persona">
+          <img class="persona-foto" src="img/equipo-galicia.jpg" alt="Galicia Barría, sommelier" loading="lazy">
+          <h4>Galicia Barría</h4>
+          <div class="persona-rol">Sommelier</div>
+          <p>Formada en la Escuela de Sommeliers de Chile, ha desarrollado su trayectoria entre el vino, la gastronomía y la hospitalidad, participando en concursos y ferias internacionales que han enriquecido su experiencia.</p>
+          <p>Su pasión por el vino y las nuevas experiencias la llevó a elegir Rapa Nui como hogar, uno de los lugares más aislados del mundo, pero donde la distancia no ha sido un impedimento para seguir haciendo lo que más disfruta: conectar personas, historias y culturas a través del vino.</p>
+          <p>Actualmente se desempeña como Jefa de Alimentos y Bebidas en Nayara Hangaroa.</p>
+          <a class="persona-ig" href="https://instagram.com/galicia_b_s" target="_blank" rel="noopener">@galicia_b_s</a>
+        </div>
+        <div class="persona">
+          <img class="persona-foto" src="img/equipo-daniel.jpg" alt="Daniel Gaete Huki, sommelier" loading="lazy">
+          <h4>Daniel Gaete Huki</h4>
+          <div class="persona-rol">Sommelier</div>
+          <p>Formado en la Escuela Argentina de Sommeliers, propone al maridaje una búsqueda por revelar la expresión más salvaje y auténtica de cada ingrediente.</p>
+          <p>Su trabajo nace desde su origen, su territorio y su identidad, buscando llevar a la mesa el corazón de cada elemento y la relación que establece con el vino y cada bebida.</p>
+          <p>Una mirada donde la gastronomía, el territorio y la sommellerie se encuentran bajo un mismo propósito: fines académicos, exploración sensorial y el placer de compartir alrededor de una larga mesa.</p>
+          <a class="persona-ig" href="https://instagram.com/danielwild_6" target="_blank" rel="noopener">@danielwild_6</a>
+        </div>
       </div>
     </div>
 
