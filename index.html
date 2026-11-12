@@ -289,7 +289,7 @@
   .pay-fields dt{ font-family:var(--serif); font-style:italic; color:var(--gold); font-size:1.1rem; line-height:1.4;}
   .pay-fields dd{ color:var(--cream-dim); font-size:0.93rem;}
   .pay-fields dd b{ color:var(--cream); font-weight:500;}
-  form{ display:grid; gap:20px;}
+  form{ display:grid; gap:20px; align-content:start;}
   .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:20px;}
   label{ display:block; font-size:0.85rem; color:var(--cream-dim); margin-bottom:8px; letter-spacing:0.02em;}
   input, select, textarea{
@@ -301,11 +301,12 @@
   select{ background:var(--panel);}
   .form-submit{
     background:var(--gold); color:var(--black); border:none; padding:16px 34px; font-size:0.95rem;
-    cursor:pointer; letter-spacing:0.02em; border-radius:2px; justify-self:start; font-family:var(--sans);
+    cursor:pointer; letter-spacing:0.02em; border-radius:2px; justify-self:start; align-self:start; font-family:var(--sans);
     transition:background 0.25s ease;
   }
   .form-submit:hover{ background:var(--cream);}
   .form-note{ font-size:0.85rem; color:var(--cream-dim); font-style:italic;}
+  .form-note a{ color:var(--gold); border-bottom:1px solid var(--gold-line);}
   #form-status{ font-size:0.9rem; margin-top:4px;}
 
   /* ---------- Footer ---------- */
@@ -949,7 +950,7 @@
       </div>
       <input type="hidden" name="_subject" value="Nueva reserva — Te Moai Sunset">
       <button type="submit" class="form-submit">Enviar reserva</button>
-      <p class="form-note">Al enviar, recibiremos tu solicitud por correo y te confirmaremos la disponibilidad.</p>
+      <p class="form-note">Al enviar, recibiremos tu solicitud por correo y te confirmaremos la disponibilidad. Para reservas del mismo día, envíala hasta las 17:00 hrs (hora de Isla de Pascua); si es más tarde, llámanos al <a href="tel:+56323431864">+56 32 343 1864</a> para confirmar disponibilidad para la noche.</p>
       <p id="form-status"></p>
     </form>
   </div>
