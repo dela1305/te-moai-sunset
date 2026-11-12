@@ -252,6 +252,15 @@
     letter-spacing:0.04em; transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
   .res-socials a:hover{ background:var(--gold); color:var(--black); border-color:var(--gold);}
+  .res-pay{ margin-top:40px; padding-top:28px; border-top:1px solid var(--hairline);}
+  .res-pay p{ margin-top:0; font-size:0.95rem;}
+  .res-pay .btn-outline{ margin-top:16px;}
+  .res-pay .pay-intro{ margin-top:18px; color:var(--cream);}
+  .pay-fields{ margin-top:10px;}
+  .pay-fields > div{ display:grid; grid-template-columns:104px 1fr; gap:14px; padding:11px 0; border-bottom:1px solid var(--hairline);}
+  .pay-fields dt{ font-family:var(--serif); font-style:italic; color:var(--gold); font-size:1.1rem; line-height:1.4;}
+  .pay-fields dd{ color:var(--cream-dim); font-size:0.93rem;}
+  .pay-fields dd b{ color:var(--cream); font-weight:500;}
   form{ display:grid; gap:20px;}
   .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:20px;}
   label{ display:block; font-size:0.85rem; color:var(--cream-dim); margin-bottom:8px; letter-spacing:0.02em;}
@@ -753,6 +762,21 @@
         <a href="https://instagram.com/te_moai" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
         <a href="https://facebook.com/temoaisunset" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
         <a href="https://wa.me/56900000000" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+      </div>
+      <div class="res-pay">
+        <p>¿Quieres regalar una comida? ¿Quieres abonar una cena o almuerzo para algún cliente importante? ¿O simplemente vas a abonar el 50% de uno de nuestros eventos exclusivos, como el maridaje? Puedes hacerlo de forma segura desde nuestro sitio, en conjunto con Getnet de Banco Santander.</p>
+        <p class="pay-intro">Al presionar el botón se abre el formulario de pago seguro de Getnet. Complétalo así:</p>
+        <dl class="pay-fields">
+          <div><dt>Referencia</dt><dd>Tu nombre.</dd></div>
+          <div><dt>Descripción</dt><dd>El motivo del pago, por ejemplo &ldquo;Regalo de comida&rdquo; o &ldquo;Abono 50% maridaje&rdquo;.</dd></div>
+          <div><dt>Monto</dt><dd>El valor que vas a abonar.</dd></div>
+          <div><dt>Identificación</dt><dd>Selecciona RUT y escríbelo con puntos y guion (por ejemplo, 12.345.678-9).</dd></div>
+          <div><dt>Correo</dt><dd>Tu correo electrónico. Luego presiona <b>Pagar</b>.</dd></div>
+        </dl>
+        <a class="btn-outline" href="https://micrositios.getnet.cl/temoaisunset" target="_blank" rel="noopener">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="9" width="12" height="8" rx="1.5"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></svg>
+          Pagar mi cuenta Online
+        </a>
       </div>
     </div>
 
