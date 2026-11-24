@@ -194,6 +194,16 @@
   .persona-rol{ font-family:var(--serif); font-style:italic; color:var(--gold); margin:2px 0 16px;}
   .persona p{ color:var(--cream-dim); font-size:0.95rem; margin-bottom:12px;}
   .persona-ig{ display:inline-block; margin-top:6px; color:var(--gold); border-bottom:1px solid var(--gold-line); font-size:0.9rem;}
+  .cena-ny{ background:var(--charcoal);}
+  .ny-menu{ display:grid; grid-template-columns:minmax(0,400px) 1fr; gap:56px; align-items:start;}
+  .ny-flyer{ display:block;}
+  .ny-flyer img{ width:100%; height:auto; border-radius:2px; border:1px solid var(--gold-line);}
+  .ny-menu .tiempos{ max-width:none;}
+  .ny-pay{ margin-top:52px;}
+  .pay-bi{ display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  .pay-bi h3{ font-size:1.5rem; color:var(--cream); margin-bottom:12px;}
+  .pay-bi .pay-intro{ color:var(--cream); font-size:0.95rem; margin-bottom:6px;}
+  .ny-actions{ display:flex; flex-wrap:wrap; gap:16px; margin-top:34px;}
   .maridaje-agotado{ margin-top:48px; padding:44px 32px; border:1px solid var(--gold-line); background:rgba(201,168,76,0.05); text-align:center;}
   .agotado-tag{ display:inline-block; text-transform:uppercase; letter-spacing:0.2em; font-size:0.75rem; color:var(--gold); border:1px solid var(--gold-line); padding:5px 14px; margin-bottom:18px;}
   .maridaje-agotado h3{ font-size:clamp(1.9rem,3.5vw,2.6rem); color:var(--gold); margin-bottom:10px;}
@@ -325,7 +335,7 @@
     .hero-media{ order:-1;}
     .hero-media img{ height:340px;}
     .hours-card{ margin-top:24px; flex-direction:column; align-items:flex-start; text-align:left;}
-    .exp-grid, .ubic-grid, .res-grid, .drinks-grid, .maridaje-facts, .equipo-grid{ grid-template-columns:1fr;}
+    .exp-grid, .ubic-grid, .res-grid, .drinks-grid, .maridaje-facts, .equipo-grid, .pay-bi, .ny-menu{ grid-template-columns:1fr;}
     .tiempo{ grid-template-columns:1fr; gap:6px;}
     .ambiente-grid{ grid-template-columns:1fr; grid-template-rows:none; height:auto;}
     .ambiente-item{ height:280px;}
@@ -344,6 +354,7 @@
     <a href="#ambiente">Ambiente</a>
     <a href="#carta">Carta</a>
     <!-- <a href="#maridajes">Maridajes</a> -->
+    <a href="#cena-ano-nuevo">Año Nuevo</a>
   </nav>
   <a href="#top" class="brand"><img src="img/logo-te-moai-sunset.webp" alt="" class="brand-mark">Te Moai <em>Sunset</em></a>
   <nav class="nav-right">
@@ -356,6 +367,7 @@
     <a href="#ambiente">Ambiente</a>
     <a href="#carta">Carta</a>
     <!-- <a href="#maridajes">Maridajes</a> -->
+    <a href="#cena-ano-nuevo">Año Nuevo</a>
     <a href="#testimonios">Testimonios</a>
     <a href="#ubicacion">Ubicación</a>
     <a href="#reservas" class="cta-link">Reservar</a>
@@ -833,6 +845,89 @@
 </section>
      FIN SECCION MARIDAJES -->
 
+<section class="cena-ny" id="cena-ano-nuevo">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Cena Maridaje de Año Nuevo</h2>
+      <p class="maridajes-copy">Menú de 5 tiempos con maridaje de vinos para celebrar Año Nuevo en Te Moai Sunset. Con abono del 50% se confirma tu reserva.</p>
+    </div>
+
+    <div class="maridaje-facts">
+      <div class="maridaje-fact">
+        <b>31 de diciembre</b>
+        <span>De 19:00 a 22:00 hrs</span>
+      </div>
+      <div class="maridaje-fact">
+        <b>$165.000 por persona</b>
+        <span>Menú de 5 tiempos con maridaje</span>
+      </div>
+      <div class="maridaje-fact">
+        <b>Abono del 50%</b>
+        <span>Para confirmación de reserva</span>
+      </div>
+    </div>
+
+    <div class="ny-menu">
+    <a class="ny-flyer" href="img/cena-ano-nuevo-2.webp" target="_blank" rel="noopener" aria-label="Ver el afiche del menú en tamaño completo">
+      <img src="img/cena-ano-nuevo-2.webp" alt="Afiche de la Cena Maridaje de Año Nuevo: menú de 5 tiempos, horario, valor de $165.000 por persona y abono del 50% para confirmar la reserva" loading="lazy">
+    </a>
+    <div class="tiempos">
+      <div class="tiempo">
+        <div class="tiempo-n">Tiempo 1</div>
+        <div><div class="tiempo-dish">Tártaro de atún en molde de papel de arroz</div><div class="tiempo-wine">Rosé, Boya, Garcés Silva</div></div>
+      </div>
+      <div class="tiempo">
+        <div class="tiempo-n">Tiempo 2</div>
+        <div><div class="tiempo-dish">Delicia de Moules (crema de mejillones)</div><div class="tiempo-wine">Chardonnay Gran Vin Villard Fine Wines</div></div>
+      </div>
+      <div class="tiempo">
+        <div class="tiempo-n">Tiempo 3</div>
+        <div><div class="tiempo-dish">Pescado Blanco Local posado en Vichyssoise</div><div class="tiempo-wine">Vigno, Bodegas Re</div></div>
+      </div>
+      <div class="tiempo">
+        <div class="tiempo-n">Tiempo 4</div>
+        <div><div class="tiempo-dish">Flat Iron sobre guiso de habas</div><div class="tiempo-wine">Syrah Carabantes, Von Siebenthal</div></div>
+      </div>
+      <div class="tiempo">
+        <div class="tiempo-n">Tiempo 5</div>
+        <div><div class="tiempo-dish">Tarta de Ricotta</div><div class="tiempo-wine">Copa de espumante de la Casa</div></div>
+      </div>
+    </div>
+    </div>
+
+    <div class="ny-pay">
+      <div class="pay-bi">
+        <div>
+          <h3>Cómo pagar tu abono</h3>
+          <p class="pay-intro">Al presionar el botón se abre el formulario de pago seguro de Getnet, de Banco Santander. Complétalo así:</p>
+          <dl class="pay-fields">
+            <div><dt>Referencia</dt><dd>Tu nombre.</dd></div>
+            <div><dt>Descripción</dt><dd>&ldquo;Abono 50% Cena Año Nuevo&rdquo; y la cantidad de personas.</dd></div>
+            <div><dt>Monto</dt><dd>$82.500 por persona (50% de $165.000), en pesos chilenos (CLP&nbsp;$). Por ejemplo, 2 personas: $165.000.</dd></div>
+            <div><dt>Identificación</dt><dd>Selecciona RUT y escríbelo con puntos y guion (por ejemplo, 12.345.678-9). Si eres extranjero, selecciona Passport (dentro de International) y escribe tu número de pasaporte.</dd></div>
+            <div><dt>Correo</dt><dd>Tu correo electrónico. Luego presiona <b>Pagar</b>.</dd></div>
+          </dl>
+        </div>
+        <div lang="en">
+          <h3>How to pay your deposit</h3>
+          <p class="pay-intro">The button opens Getnet&rsquo;s secure payment form (Banco Santander). The form is in Spanish, so use the field names below:</p>
+          <dl class="pay-fields">
+            <div><dt>Referencia</dt><dd>Reference: your name.</dd></div>
+            <div><dt>Descripción</dt><dd>Description: &ldquo;New Year Dinner 50% deposit&rdquo; and the number of guests.</dd></div>
+            <div><dt>Monto</dt><dd>Amount: CLP&nbsp;$82,500 per person (50% of $165,000), in Chilean pesos. For example, 2 guests: CLP&nbsp;$165,000.</dd></div>
+            <div><dt>Identificación</dt><dd>ID: if you have a Chilean RUT, select RUT and enter it with dots and a dash (for example, 12.345.678-9). If you are a foreigner, select Passport (under International) and enter your passport number.</dd></div>
+            <div><dt>Correo</dt><dd>Email: your email address. Then press <b>Pagar</b> (Pay).</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="ny-actions">
+        <a class="btn-primary" href="https://micrositios.getnet.cl/temoaisunset" target="_blank" rel="noopener">Pagar abono online / Pay deposit online</a>
+        <a class="btn-outline" href="https://wa.me/56942418603" target="_blank" rel="noopener">Reservas por WhatsApp +56 9 4241 8603</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="testimonios" id="testimonios">
   <div class="wrap">
     <div class="section-head">
@@ -886,7 +981,6 @@
       <div class="res-socials">
         <a href="https://instagram.com/te_moai" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
         <a href="https://facebook.com/temoaisunset" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
-        <a href="https://wa.me/56900000000" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
       </div>
       <div class="res-pay">
         <p>¿Quieres regalar una comida? ¿Quieres abonar una cena o almuerzo para algún cliente importante? ¿O simplemente vas a abonar el 50% de uno de nuestros eventos exclusivos, como el maridaje? Puedes hacerlo de forma segura desde nuestro sitio, en conjunto con Getnet de Banco Santander.</p>
@@ -895,7 +989,7 @@
           <div><dt>Referencia</dt><dd>Tu nombre.</dd></div>
           <div><dt>Descripción</dt><dd>El motivo del pago, por ejemplo &ldquo;Regalo de comida&rdquo; o &ldquo;Abono 50% maridaje&rdquo;.</dd></div>
           <div><dt>Monto</dt><dd>El valor que vas a abonar, en pesos chilenos (CLP&nbsp;$).</dd></div>
-          <div><dt>Identificación</dt><dd>Selecciona RUT y escríbelo con puntos y guion (por ejemplo, 12.345.678-9).</dd></div>
+          <div><dt>Identificación</dt><dd>Selecciona RUT y escríbelo con puntos y guion (por ejemplo, 12.345.678-9). Si eres extranjero, selecciona Passport (dentro de International) y escribe tu número de pasaporte.</dd></div>
           <div><dt>Correo</dt><dd>Tu correo electrónico. Luego presiona <b>Pagar</b>.</dd></div>
         </dl>
         <a class="btn-outline" href="https://micrositios.getnet.cl/temoaisunset" target="_blank" rel="noopener">
